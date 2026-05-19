@@ -1,0 +1,585 @@
+:root {
+  --bg: #160f12;
+  --panel: rgba(255, 247, 238, 0.92);
+  --paper: #fff8ee;
+  --ink: #281519;
+  --muted: #755b5f;
+  --rose: #c84866;
+  --rose-2: #f47b91;
+  --leaf: #456d3c;
+  --leaf-2: #78a45e;
+  --branch: #8a5c3a;
+  --thorn: #57242d;
+  --gold: #d7a94a;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 22% 18%, rgba(200, 72, 102, 0.26), transparent 34%),
+    radial-gradient(circle at 84% 24%, rgba(215, 169, 74, 0.18), transparent 28%),
+    linear-gradient(135deg, #120a0d 0%, #23161a 56%, #120d10 100%);
+  color: var(--paper);
+  font-family: Georgia, "Times New Roman", serif;
+  overflow-x: hidden;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 320px minmax(520px, 1fr) 390px;
+  gap: 18px;
+  padding: 20px;
+}
+
+.hero,
+.details,
+.legend {
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.hero {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.eyebrow {
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(200, 72, 102, 0.12);
+  color: #8f2740;
+  font: 700 0.76rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.15rem, 3.5vw, 4.2rem);
+  line-height: 0.94;
+  letter-spacing: -0.06em;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+.metaphor-card {
+  padding: 16px;
+  border-radius: 22px;
+  background: #fff4e2;
+  border: 1px solid rgba(139, 92, 58, 0.16);
+}
+
+.metaphor-card p {
+  margin: 0;
+  color: #44252b;
+  line-height: 1.55;
+  font-size: 0.97rem;
+}
+
+.controls {
+  display: grid;
+  gap: 11px;
+  margin-top: auto;
+}
+
+.control-label {
+  color: #5e4248;
+  font: 700 0.78rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.control {
+  width: 100%;
+  border: 1px solid rgba(40, 21, 25, 0.16);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+  border-radius: 16px;
+  padding: 12px 13px;
+  outline: none;
+}
+
+.control:focus {
+  border-color: rgba(200, 72, 102, 0.7);
+  box-shadow: 0 0 0 4px rgba(200, 72, 102, 0.11);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.stat {
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(40, 21, 25, 0.08);
+}
+
+.stat strong {
+  display: block;
+  font-size: 1.55rem;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.stat span {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font: 700 0.72rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.garden-wrap {
+  position: relative;
+  min-height: calc(100vh - 40px);
+  border-radius: 34px;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 50% 26%, rgba(255, 248, 238, 0.11), transparent 32%),
+    radial-gradient(circle at 50% 100%, rgba(69, 109, 60, 0.36), transparent 40%),
+    rgba(255, 248, 238, 0.035);
+  background-size: 42px 42px, 42px 42px, auto, auto, auto;
+  border: 1px solid rgba(255, 248, 238, 0.14);
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.18), var(--shadow);
+}
+
+.garden-title {
+  position: absolute;
+  z-index: 4;
+  top: 18px;
+  left: 22px;
+  right: 22px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+.garden-title h2 {
+  margin: 0;
+  font-size: clamp(1.1rem, 1.8vw, 1.65rem);
+  letter-spacing: -0.04em;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.4);
+}
+
+.garden-title p {
+  margin: 6px 0 0;
+  max-width: 560px;
+  color: rgba(255, 248, 238, 0.76);
+  font: 500 0.92rem/1.45 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.hint {
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: rgba(255, 248, 238, 0.11);
+  color: rgba(255, 248, 238, 0.8);
+  border: 1px solid rgba(255, 248, 238, 0.13);
+  white-space: nowrap;
+  font: 700 0.75rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.trunk,
+.branch-line {
+  fill: none;
+  stroke: var(--branch);
+  stroke-linecap: round;
+  filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.2));
+}
+
+.trunk {
+  stroke-width: 18;
+}
+
+.branch-line {
+  stroke-width: 8;
+  opacity: 0.9;
+}
+
+.branch-line.dimmed,
+.branch-label.dimmed,
+.leaf.dimmed,
+.thorn.dimmed,
+.flower.dimmed,
+.impact-seed.dimmed {
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.branch-label {
+  fill: rgba(255, 248, 238, 0.8);
+  font: 700 11px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0.02em;
+  paint-order: stroke;
+  stroke: rgba(0, 0, 0, 0.45);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+.leaf path {
+  fill: url(#leafGradient);
+  stroke: rgba(255, 248, 238, 0.45);
+  stroke-width: 1;
+}
+
+.leaf text,
+.thorn text,
+.impact-seed text {
+  fill: rgba(255, 248, 238, 0.82);
+  font: 700 10px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  paint-order: stroke;
+  stroke: rgba(0, 0, 0, 0.5);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+.thorn path {
+  fill: var(--thorn);
+  stroke: rgba(255, 248, 238, 0.35);
+  stroke-width: 1;
+}
+
+.impact-seed circle {
+  fill: var(--gold);
+  stroke: rgba(255, 248, 238, 0.8);
+  stroke-width: 1;
+}
+
+.flower {
+  cursor: pointer;
+  transform-origin: center;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.flower:hover,
+.flower.active {
+  transform: scale(1.08);
+}
+
+.flower .petal {
+  fill: url(#petalGradient);
+  stroke: rgba(255, 248, 238, 0.55);
+  stroke-width: 1;
+}
+
+.flower .centre {
+  fill: #ffe0a3;
+  stroke: rgba(68, 37, 43, 0.24);
+  stroke-width: 1;
+}
+
+.flower-name {
+  fill: #fff8ee;
+  font: 800 12px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0.02em;
+  paint-order: stroke;
+  stroke: rgba(0, 0, 0, 0.5);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.details {
+  padding: 22px;
+  min-height: calc(100vh - 40px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.details-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.field-pill {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(69, 109, 60, 0.12);
+  color: #3c6739;
+  font: 800 0.7rem/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.details h3 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.years {
+  margin: -4px 0 2px;
+  color: var(--muted);
+  font: 700 0.85rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.portrait-bloom {
+  height: 132px;
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 50% 44%, #ffe4ab 0 10%, transparent 11%),
+    radial-gradient(circle at 50% 26%, #f47b91 0 13%, transparent 14%),
+    radial-gradient(circle at 70% 42%, #c84866 0 13%, transparent 14%),
+    radial-gradient(circle at 30% 42%, #c84866 0 13%, transparent 14%),
+    radial-gradient(circle at 62% 65%, #f47b91 0 13%, transparent 14%),
+    radial-gradient(circle at 38% 65%, #f47b91 0 13%, transparent 14%),
+    linear-gradient(135deg, rgba(200, 72, 102, 0.14), rgba(215, 169, 74, 0.2));
+  border: 1px solid rgba(40, 21, 25, 0.08);
+}
+
+.section {
+  padding: 15px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.56);
+  border: 1px solid rgba(40, 21, 25, 0.08);
+}
+
+.section h4 {
+  margin: 0 0 7px;
+  color: #842b40;
+  font: 900 0.75rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.section p {
+  margin: 0;
+  color: #39242a;
+  line-height: 1.52;
+  font-size: 0.96rem;
+}
+
+.source-row {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.source-row a,
+.reset-button {
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff8ee;
+  background: linear-gradient(135deg, #9d2f49, #c84866);
+  border-radius: 999px;
+  padding: 11px 14px;
+  font: 800 0.78rem/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.reset-button {
+  background: #2f201f;
+}
+
+.legend {
+  display: none;
+  position: absolute;
+  left: 22px;
+  bottom: 22px;
+  z-index: 6;
+  padding: 13px;
+  max-width: 340px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #44252b;
+  font: 700 0.75rem/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+.dot.flower-dot { background: var(--rose); }
+.dot.branch-dot { background: var(--branch); }
+.dot.leaf-dot { background: var(--leaf); }
+.dot.thorn-dot { background: var(--thorn); }
+.dot.seed-dot { background: var(--gold); }
+
+.empty-state {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: min(420px, calc(100% - 44px));
+  border-radius: 26px;
+  padding: 24px;
+  background: var(--paper);
+  color: var(--ink);
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.empty-state h3 {
+  margin: 0 0 8px;
+  font-size: 1.6rem;
+  letter-spacing: -0.05em;
+}
+
+.empty-state p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+@keyframes drawBranch {
+  from { stroke-dashoffset: 760; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes bloom {
+  0% { transform: scale(0.3) rotate(-8deg); opacity: 0; }
+  70% { transform: scale(1.08) rotate(2deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.branch-line,
+.trunk {
+  stroke-dasharray: 760;
+  animation: drawBranch 1.4s ease both;
+}
+
+.flower {
+  animation: bloom 0.7s cubic-bezier(.19, 1, .22, 1) both;
+}
+
+.leaf,
+.thorn,
+.impact-seed {
+  transition: opacity 0.25s ease;
+}
+
+@media (max-width: 1180px) {
+  .app {
+    grid-template-columns: 300px minmax(460px, 1fr);
+  }
+
+  .details {
+    grid-column: 1 / -1;
+    min-height: auto;
+  }
+
+  .garden-wrap {
+    min-height: 720px;
+  }
+
+  .legend {
+    display: block;
+  }
+}
+
+@media (max-width: 800px) {
+  .app {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  .garden-wrap {
+    min-height: 760px;
+  }
+
+  .garden-title {
+    display: block;
+  }
+
+  .hint {
+    display: inline-flex;
+    margin-top: 10px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stat {
+    padding: 11px 9px;
+  }
+
+  .stat strong {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .garden-wrap {
+    min-height: 660px;
+  }
+
+  .branch-label,
+  .leaf text,
+  .thorn text,
+  .impact-seed text {
+    display: none;
+  }
+}
