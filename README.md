@@ -1,21 +1,27 @@
 # The Women Who Made Science Bloom
 
-A calm, interactive GitHub Pages science garden featuring 20 women scientists from across the world.
+A GitHub Pages interactive project built as a living tree of women scientists.
+
+## What this version changes
+
+This version returns to the original metaphor properly:
+
+- A real tree with a **trunk**, **boughs** and **branch-end blossoms**
+- A **dynamic environment** with floating pollen, drifting petals, moving sky glows and layered ground
+- The selected blossom reveals a **leaf**, **thorn** and **seed** directly on the tree
+- The side panel gives the fuller story
 
 ## Visual metaphor
 
 - **Flower** = scientist
 - **Branch** = breakthrough moment
 - **Leaf** = discovery
-- **Thorn** = struggle or barrier
+- **Thorn** = barrier or struggle
 - **Seed** = long-term impact
 
-## What is included
+## Dataset
 
-The dataset includes scientists across physics, chemistry, medicine, mathematics, botany, genetics, environmental science, neuroscience, astrophysics, molecular biology and space mathematics.
-
-Regions represented include:
-
+The dataset includes 20 women scientists from:
 - Africa
 - Asia
 - Europe
@@ -40,14 +46,12 @@ women-science-bloom/
 
 ## Run locally
 
-Because the site loads `scientists.json`, open it through a local server rather than double-clicking the HTML file.
-
 ```bash
 cd women-science-bloom/docs
 python3 -m http.server 8000
 ```
 
-Then open:
+Open:
 
 ```text
 http://localhost:8000
@@ -60,13 +64,3 @@ Use:
 ```text
 Settings → Pages → Deploy from a branch → main → /docs
 ```
-
-## Add or edit scientists
-
-Edit:
-
-```text
-docs/data/scientists.json
-```
-
-Keep entries short so the garden stays readable.

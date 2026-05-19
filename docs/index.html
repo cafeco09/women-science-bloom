@@ -3,25 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A calm interactive garden of 20 women scientists from across the world, their breakthroughs, discoveries, struggles and impact." />
+  <meta name="description" content="A living interactive tree of women scientists, with a dynamic environment and global dataset." />
   <title>The Women Who Made Science Bloom</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+
   <main class="page-shell">
     <header class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Interactive global science garden</p>
+        <p class="eyebrow">Living science tree</p>
         <h1>The Women Who Made Science Bloom</h1>
         <p class="hero-text">
-          Explore 20 women scientists from across the world through a simple garden metaphor:
-          choose a flower, then follow her breakthrough branch, discovery leaf, struggle thorn
-          and lasting impact seed.
+          A global, interactive tree of women scientists. Each flower is a scientist. The branch is her breakthrough.
+          The leaf is the discovery. The thorn is the struggle. The seed is the impact.
         </p>
       </div>
 
-      <section class="legend-card" aria-label="How to read the garden">
-        <h2>How to read it</h2>
+      <section class="legend-card" aria-label="How to read the tree">
+        <h2>How to read the tree</h2>
         <div class="legend-grid">
           <span><b>🌸 Flower</b> scientist</span>
           <span><b>🌿 Branch</b> breakthrough</span>
@@ -34,8 +36,8 @@
 
     <section class="control-bar" aria-label="Search and filters">
       <label>
-        <span>Search the garden</span>
-        <input id="searchInput" type="search" placeholder="DNA, mRNA, space, malaria…" />
+        <span>Search</span>
+        <input id="searchInput" type="search" placeholder="DNA, space, malaria, CRISPR…" />
       </label>
 
       <label>
@@ -59,25 +61,63 @@
         </select>
       </label>
 
-      <button id="resetFilters" type="button">Reset</button>
+      <button id="resetFilters" type="button">Reset tree</button>
     </section>
 
     <section class="dashboard">
-      <section class="garden-panel" aria-label="Scientist flowers">
+      <section class="tree-panel" aria-label="Interactive scientist tree">
         <div class="panel-heading">
           <div>
-            <p class="eyebrow small">Garden map</p>
-            <h2>Pick a scientist flower</h2>
+            <p class="eyebrow small">Tree view</p>
+            <h2>Click a blossom</h2>
           </div>
           <p id="visibleCount" class="count-pill">0 visible</p>
         </div>
 
-        <div class="garden-stage">
-          <div id="flowerGrid" class="flower-grid"></div>
+        <div class="tree-stage">
+          <div class="sky-glow glow-one" aria-hidden="true"></div>
+          <div class="sky-glow glow-two" aria-hidden="true"></div>
+          <div id="pollenLayer" class="pollen-layer" aria-hidden="true"></div>
+          <div id="petalLayer" class="petal-layer" aria-hidden="true"></div>
+
+          <svg id="treeSvg" role="img" aria-label="Interactive tree of women scientists">
+            <defs>
+              <linearGradient id="trunkGradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#6b432b"/>
+                <stop offset="50%" stop-color="#8b5a3c"/>
+                <stop offset="100%" stop-color="#5a3322"/>
+              </linearGradient>
+
+              <linearGradient id="branchGradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#8e5d3c"/>
+                <stop offset="100%" stop-color="#65422d"/>
+              </linearGradient>
+
+              <radialGradient id="petalGradient" cx="50%" cy="45%" r="72%">
+                <stop offset="0%" stop-color="#ffd5df"/>
+                <stop offset="50%" stop-color="#f08ba0"/>
+                <stop offset="100%" stop-color="#a73b58"/>
+              </radialGradient>
+
+              <linearGradient id="leafGradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#9fd486"/>
+                <stop offset="100%" stop-color="#427242"/>
+              </linearGradient>
+
+              <radialGradient id="seedGradient" cx="50%" cy="45%" r="75%">
+                <stop offset="0%" stop-color="#ffe7ac"/>
+                <stop offset="100%" stop-color="#cf9536"/>
+              </radialGradient>
+            </defs>
+          </svg>
+
+          <div class="ground ground-back" aria-hidden="true"></div>
+          <div class="ground ground-front" aria-hidden="true"></div>
+          <div class="tree-note">The selected blossom reveals its leaf, thorn and seed.</div>
 
           <div id="emptyState" class="empty-state">
-            <h3>No flowers found</h3>
-            <p>Clear the search or choose a wider filter.</p>
+            <h3>No blossoms found</h3>
+            <p>Try a wider filter or clear the search.</p>
           </div>
         </div>
       </section>
@@ -89,9 +129,7 @@
             <h2 id="detailName">Loading…</h2>
             <p id="detailMeta" class="meta-line"></p>
           </div>
-          <div class="large-flower" aria-hidden="true">
-            <span></span>
-          </div>
+          <div class="large-flower" aria-hidden="true"><span></span></div>
         </div>
 
         <div class="story-summary">
@@ -132,9 +170,7 @@
           </div>
         </section>
 
-        <a id="detailSource" class="source-link" href="#" target="_blank" rel="noreferrer">
-          Open source
-        </a>
+        <a id="detailSource" class="source-link" href="#" target="_blank" rel="noreferrer">Open source</a>
       </aside>
     </section>
   </main>
