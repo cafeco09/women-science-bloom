@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A living interactive tree of women scientists with a bottom analysis drawer." />
+  <meta name="description" content="A living interactive tree of women scientists with portrait nodes, thought-bubble names and a bottom analysis drawer." />
   <title>The Women Who Made Science Bloom</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -17,15 +17,16 @@
         <p class="eyebrow">Living science tree</p>
         <h1>The Women Who Made Science Bloom</h1>
         <p class="hero-text">
-          Click any blossom to open a bottom analysis drawer with the scientist’s story and comparative insights.
-          The tree stays clean; the data appears when you need it.
+          Portrait nodes replace the flower icons. Hover to see a thought-bubble name. Click a portrait
+          to open the analysis drawer with the scientist’s story, timeline position and comparative charts.
         </p>
       </div>
 
       <section class="legend-card" aria-label="How to read the tree">
         <h2>How to read the tree</h2>
         <div class="legend-grid">
-          <span><b>🌸 Flower</b> scientist</span>
+          <span><b>👩‍🔬 Portrait</b> scientist</span>
+          <span><b>💭 Thought bubble</b> name</span>
           <span><b>🌿 Branch</b> breakthrough</span>
           <span><b>🍃 Leaf</b> discovery</span>
           <span><b>🪡 Thorn</b> struggle</span>
@@ -87,25 +88,28 @@
                 <stop offset="100%" stop-color="#65422d"/>
               </linearGradient>
 
-              <radialGradient id="petalGradient" cx="50%" cy="45%" r="72%">
-                <stop offset="0%" stop-color="#ffd5df"/>
-                <stop offset="50%" stop-color="#f08ba0"/>
-                <stop offset="100%" stop-color="#a73b58"/>
-              </radialGradient>
-
               <linearGradient id="leafGradient" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0%" stop-color="#9fd486"/>
                 <stop offset="100%" stop-color="#427242"/>
               </linearGradient>
+
+              <linearGradient id="portraitFrame" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fff8fb"/>
+                <stop offset="100%" stop-color="#f5c7d5"/>
+              </linearGradient>
+
+              <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="rgba(52,28,32,0.18)"/>
+              </filter>
             </defs>
           </svg>
 
           <div class="ground ground-back" aria-hidden="true"></div>
           <div class="ground ground-front" aria-hidden="true"></div>
-          <div class="tree-note">The canopy stays clean. Names appear on hover; analysis opens below.</div>
+          <div class="tree-note">Thought bubbles appear on hover. The analysis drawer stays below the tree.</div>
 
           <div id="emptyState" class="empty-state">
-            <h3>No blossoms found</h3>
+            <h3>No portraits found</h3>
             <p>Try a wider filter or clear the search.</p>
           </div>
         </div>

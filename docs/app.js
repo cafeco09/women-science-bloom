@@ -142,7 +142,6 @@ function renderTimeline(sorted, selected) {
 function renderDistribution(container, data, highlightLabel) {
   container.innerHTML = "";
   const max = Math.max(...data.map((d) => d.value), 1);
-
   data.forEach((item) => {
     const row = document.createElement("div");
     row.className = "bar-row" + (item.label === highlightLabel ? " highlight" : "");
@@ -201,10 +200,6 @@ function buildAmbientParticles() {
   }
 }
 
-function getVisibleScientists() {
-  return scientists.filter(matchesFilters);
-}
-
 function getSlots(count) {
   const tiers = [
     { y: 0.15, xs: [0.46, 0.54] },
@@ -213,7 +208,6 @@ function getSlots(count) {
     { y: 0.47, xs: [0.16, 0.28, 0.40, 0.60, 0.72, 0.84] },
     { y: 0.60, xs: [0.24, 0.38, 0.62, 0.76] }
   ];
-
   const slots = [];
   for (const tier of tiers) {
     for (const x of tier.xs) {
@@ -306,6 +300,63 @@ function chooseAnchor(slot, anchors) {
   return anchors.rightMid;
 }
 
+function paletteFromName(name) {
+  const palettes = [
+    { skin: "#f2c8b5", hair: "#5e3524", coat: "#8d4f63" },
+    { skin: "#d8a189", hair: "#2f1a13", coat: "#4c7b43" },
+    { skin: "#b87d65", hair: "#3b231d", coat: "#426d92" },
+    { skin: "#f1d0b8", hair: "#6e5b54", coat: "#7a5a96" },
+    { skin: "#c98e76", hair: "#2f2521", coat: "#aa6b3e" }
+  ];
+  let total = 0;
+  for (const ch of name) total += ch.charCodeAt(0);
+  return palettes[total % palettes.length];
+}
+
+function makeFaceIllustration(group, x, y, palette) {
+  // shoulders
+  group.appendChild(svgEl("path", {
+    class: "face-coat",
+    fill: palette.coat,
+    d: `M ${x - 18} ${y + 19} Q ${x} ${y + 4} ${x + 18} ${y + 19} L ${x + 18} ${y + 26} L ${x - 18} ${y + 26} Z`
+  }));
+  // hair back
+  group.appendChild(svgEl("ellipse", {
+    class: "face-hair",
+    cx: x,
+    cy: y - 4,
+    rx: 14.5,
+    ry: 16.5,
+    fill: palette.hair
+  }));
+  // face
+  group.appendChild(svgEl("ellipse", {
+    class: "face-skin",
+    cx: x,
+    cy: y - 1,
+    rx: 10.8,
+    ry: 12.8,
+    fill: palette.skin
+  }));
+  // fringe / top hair
+  group.appendChild(svgEl("path", {
+    class: "face-hair",
+    fill: palette.hair,
+    d: `M ${x - 11} ${y - 5} Q ${x - 6} ${y - 18} ${x + 1} ${y - 15} Q ${x + 9} ${y - 13} ${x + 11} ${y - 4} Q ${x + 4} ${y - 10} ${x - 11} ${y - 5} Z`
+  }));
+  // eyes
+  group.appendChild(svgEl("circle", { cx: x - 3.2, cy: y - 2, r: 0.9, fill: "#3b2d2c" }));
+  group.appendChild(svgEl("circle", { cx: x + 3.2, cy: y - 2, r: 0.9, fill: "#3b2d2c" }));
+  // mouth
+  group.appendChild(svgEl("path", {
+    d: `M ${x - 3} ${y + 4} Q ${x} ${y + 6} ${x + 3} ${y + 4}`,
+    stroke: "#8f5c5c",
+    "stroke-width": 1,
+    fill: "none",
+    "stroke-linecap": "round"
+  }));
+}
+
 function makeDiscoveryLeaf(x, y, label) {
   const group = svgEl("g", { class: "discovery-leaf", transform: `translate(${x}, ${y}) rotate(-12)` });
   group.appendChild(svgEl("path", { d: "M 0 0 C 18 -22 52 -18 66 0 C 52 20 18 24 0 0 Z" }));
@@ -333,47 +384,52 @@ function makeThornTag(x, y, rotation = 0) {
   return group;
 }
 
-function makeHoverLabel(x, y, scientist) {
-  const group = svgEl("g", { class: "hover-label", transform: `translate(${x}, ${y - 36})` });
-  const labelWidth = Math.max(82, Math.min(140, scientist.name.length * 7.2));
-  group.appendChild(svgEl("rect", { x: -labelWidth / 2, y: -14, width: labelWidth, height: 28 }));
-  const text = svgEl("text", { x: 0, y: 4 });
+function makeThoughtBubble(x, y, scientist) {
+  const labelWidth = Math.max(92, Math.min(170, scientist.name.length * 7.5));
+  const group = svgEl("g", { class: "thought-bubble", transform: `translate(${x}, ${y - 58})` });
+  group.appendChild(svgEl("circle", { cx: -18, cy: 21, r: 4 }));
+  group.appendChild(svgEl("circle", { cx: -10, cy: 14, r: 6 }));
+  group.appendChild(svgEl("rect", { x: -labelWidth / 2, y: -18, width: labelWidth, height: 32, rx: 16, ry: 16 }));
+  const text = svgEl("text", { x: 0, y: 2 });
   text.textContent = scientist.name;
   group.appendChild(text);
   return group;
 }
 
-function makeBlossom(endX, endY, scientist, selected = false) {
+function makePortraitNode(x, y, scientist, selected = false) {
   const group = svgEl("g", {
-    class: `blossom-group ${selected ? "active" : ""}`,
+    class: `portrait-group ${selected ? "active" : ""}`,
     tabindex: "0",
     role: "button",
     "aria-label": `${scientist.name}, ${scientist.field}`
   });
   group.dataset.id = scientist.id;
 
-  const petals = 6;
-  for (let i = 0; i < petals; i += 1) {
-    const angle = (Math.PI * 2 * i) / petals;
-    const px = endX + Math.cos(angle) * 9;
-    const py = endY + Math.sin(angle) * 9;
-    group.appendChild(svgEl("ellipse", {
-      class: "blossom-petal",
-      cx: px.toFixed(1),
-      cy: py.toFixed(1),
-      rx: 7,
-      ry: 11,
-      transform: `rotate(${(angle * 180 / Math.PI).toFixed(1)} ${px.toFixed(1)} ${py.toFixed(1)})`
-    }));
+  group.appendChild(svgEl("circle", { class: "portrait-ring", cx: x, cy: y, r: 28 }));
+  group.appendChild(svgEl("circle", { class: "portrait-inner", cx: x, cy: y, r: 23 }));
+
+  if (scientist.portrait) {
+    const clipId = `clip-${scientist.id}`;
+    const clip = svgEl("clipPath", { id: clipId });
+    clip.appendChild(svgEl("circle", { cx: x, cy: y, r: 23 }));
+    treeSvg.appendChild(clip);
+    const img = svgEl("image", {
+      href: scientist.portrait,
+      x: x - 23, y: y - 23, width: 46, height: 46,
+      "clip-path": `url(#${clipId})`,
+      preserveAspectRatio: "xMidYMid slice"
+    });
+    group.appendChild(img);
+  } else {
+    makeFaceIllustration(group, x, y, paletteFromName(scientist.name));
   }
 
-  group.appendChild(svgEl("circle", { class: "blossom-centre", cx: endX, cy: endY, r: 8.2 }));
-  group.appendChild(makeHoverLabel(endX, endY, scientist));
+  group.appendChild(makeThoughtBubble(x, y, scientist));
 
   if (selected) {
-    group.appendChild(makeDiscoveryLeaf(endX + 22, endY - 18, scientist.leafLabel || "discovery"));
-    group.appendChild(makeSeedTag(endX + 14, endY + 52));
-    group.appendChild(makeThornTag(endX - 26, endY - 8, -20));
+    group.appendChild(makeDiscoveryLeaf(x + 32, y - 18, scientist.leafLabel || "discovery"));
+    group.appendChild(makeSeedTag(x + 18, y + 54));
+    group.appendChild(makeThornTag(x - 34, y - 8, -20));
   }
 
   group.addEventListener("click", () => {
@@ -381,6 +437,7 @@ function makeBlossom(endX, endY, scientist, selected = false) {
     renderTree();
     document.getElementById("analysisDrawer").scrollIntoView({ behavior: "smooth", block: "nearest" });
   });
+
   group.addEventListener("keydown", (event) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
@@ -394,7 +451,7 @@ function makeBlossom(endX, endY, scientist, selected = false) {
 }
 
 function clearRenderedSvg() {
-  [...treeSvg.querySelectorAll(":scope > g, :scope > path, :scope > ellipse")].forEach((node) => node.remove());
+  [...treeSvg.querySelectorAll(":scope > g, :scope > path, :scope > ellipse, :scope > clipPath, :scope > circle")].forEach((node) => node.remove());
 }
 
 function renderTree() {
@@ -428,8 +485,8 @@ function renderTree() {
     });
     treeSvg.appendChild(twig);
 
-    const blossom = makeBlossom(endX, endY, scientist, scientist.id === selectedId);
-    treeSvg.appendChild(blossom);
+    const portraitNode = makePortraitNode(endX, endY, scientist, scientist.id === selectedId);
+    treeSvg.appendChild(portraitNode);
   });
 
   const selected = visibleScientists.find((s) => s.id === selectedId) || visibleScientists[0];
