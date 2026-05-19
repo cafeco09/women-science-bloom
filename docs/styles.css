@@ -10,7 +10,7 @@
   --branch: #9b6a41;
   --thorn: #5a2931;
   --seed: #d5a84e;
-  --card: rgba(255, 255, 255, 0.78);
+  --card: rgba(255, 255, 255, 0.80);
   --line: rgba(37, 21, 26, 0.11);
   --shadow: 0 22px 70px rgba(69, 38, 42, 0.13);
   --radius: 28px;
@@ -42,7 +42,7 @@ select {
 }
 
 .page-shell {
-  width: min(1420px, calc(100% - 32px));
+  width: min(1480px, calc(100% - 32px));
   margin: 0 auto;
   padding: 22px 0 36px;
 }
@@ -97,7 +97,7 @@ p {
 }
 
 h1 {
-  max-width: 920px;
+  max-width: 980px;
   margin-bottom: 18px;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(3rem, 7vw, 7.1rem);
@@ -106,7 +106,7 @@ h1 {
 }
 
 .hero-text {
-  max-width: 760px;
+  max-width: 790px;
   margin-bottom: 0;
   color: var(--muted);
   font-size: clamp(1.02rem, 1.4vw, 1.22rem);
@@ -149,7 +149,7 @@ h1 {
 
 .control-bar {
   display: grid;
-  grid-template-columns: minmax(260px, 1fr) 220px 180px auto;
+  grid-template-columns: minmax(260px, 1fr) 205px 170px 170px auto;
   gap: 12px;
   align-items: end;
   padding: 16px;
@@ -199,18 +199,18 @@ h1 {
 
 .dashboard {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 430px;
+  grid-template-columns: minmax(0, 1fr) 440px;
   gap: 18px;
   align-items: start;
 }
 
-.garden-panel,
-.story-panel {
-  min-height: 680px;
+.garden-panel {
+  min-height: 760px;
+  padding: 22px;
 }
 
-.garden-panel {
-  padding: 22px;
+.story-panel {
+  min-height: 680px;
 }
 
 .panel-heading {
@@ -234,6 +234,7 @@ h1 {
 
 .count-pill,
 .field-pill,
+.origin-pill,
 .year-pill {
   display: inline-flex;
   align-items: center;
@@ -254,83 +255,38 @@ h1 {
 
 .garden-stage {
   position: relative;
-  min-height: 570px;
+  min-height: 650px;
   border-radius: 26px;
   overflow: hidden;
-  padding: 28px;
+  padding: 24px;
   background:
-    linear-gradient(90deg, rgba(155, 106, 65, 0.12) 1px, transparent 1px),
-    linear-gradient(rgba(155, 106, 65, 0.08) 1px, transparent 1px),
-    radial-gradient(circle at 50% 100%, rgba(76, 122, 67, 0.18), transparent 42%),
+    linear-gradient(90deg, rgba(155, 106, 65, 0.09) 1px, transparent 1px),
+    linear-gradient(rgba(155, 106, 65, 0.07) 1px, transparent 1px),
+    radial-gradient(circle at 50% 100%, rgba(76, 122, 67, 0.14), transparent 42%),
     rgba(255, 250, 242, 0.7);
   background-size: 52px 52px, 52px 52px, auto, auto;
   border: 1px solid var(--line);
-}
-
-.stem {
-  position: absolute;
-  left: 50%;
-  top: 80px;
-  bottom: 32px;
-  width: 9px;
-  transform: translateX(-50%);
-  border-radius: 999px;
-  background: linear-gradient(180deg, rgba(155, 106, 65, 0.35), rgba(76, 122, 67, 0.72));
-  box-shadow: 0 0 0 8px rgba(155, 106, 65, 0.05);
-}
-
-.root-label {
-  position: absolute;
-  left: 50%;
-  bottom: -6px;
-  transform: translate(-50%, 100%);
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: #f0dfca;
-  color: #6b4a2f;
-  font-size: 0.72rem;
-  font-weight: 850;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .flower-grid {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px 54px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
 }
 
 .flower-card {
   position: relative;
-  min-height: 124px;
+  min-height: 138px;
   border: 1px solid var(--line);
   border-radius: 24px;
-  padding: 16px 16px 15px;
-  background: rgba(255, 255, 255, 0.82);
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.84);
   box-shadow: 0 12px 36px rgba(69, 38, 42, 0.07);
   cursor: pointer;
   text-align: left;
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-}
-
-.flower-card:nth-child(odd)::after,
-.flower-card:nth-child(even)::after {
-  content: "";
-  position: absolute;
-  top: 52%;
-  width: 46px;
-  height: 2px;
-  background: rgba(155, 106, 65, 0.24);
-}
-
-.flower-card:nth-child(odd)::after {
-  right: -46px;
-}
-
-.flower-card:nth-child(even)::after {
-  left: -46px;
 }
 
 .flower-card:hover,
@@ -348,7 +304,7 @@ h1 {
   display: flex;
   gap: 12px;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 11px;
 }
 
 .bloom-icon {
@@ -370,7 +326,7 @@ h1 {
 .flower-card h3 {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.22rem;
+  font-size: 1.16rem;
   line-height: 1.05;
   letter-spacing: -0.04em;
 }
@@ -379,7 +335,7 @@ h1 {
   display: block;
   margin-top: 4px;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 750;
 }
 
@@ -394,8 +350,13 @@ h1 {
   border-radius: 999px;
   background: rgba(76, 122, 67, 0.1);
   color: #3d6738;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 850;
+}
+
+.flower-card .mini-story span.region-tag {
+  background: rgba(213, 168, 78, 0.16);
+  color: #745321;
 }
 
 .empty-state {
@@ -429,6 +390,7 @@ h1 {
   position: sticky;
   top: 18px;
   padding: 22px;
+  border-radius: var(--radius);
 }
 
 .story-top {
@@ -483,6 +445,11 @@ h1 {
 .field-pill {
   background: rgba(76, 122, 67, 0.12);
   color: #376230;
+}
+
+.origin-pill {
+  background: rgba(195, 70, 99, 0.11);
+  color: var(--rose-dark);
 }
 
 .year-pill {
@@ -545,8 +512,7 @@ h1 {
   font-weight: 850;
 }
 
-@media (max-width: 1120px) {
-  .hero,
+@media (max-width: 1240px) {
   .dashboard {
     grid-template-columns: 1fr;
   }
@@ -555,11 +521,33 @@ h1 {
     position: static;
     min-height: auto;
   }
+
+  .flower-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1080px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .control-bar {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .control-bar button {
+    grid-column: 1 / -1;
+  }
+
+  .flower-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 780px) {
   .page-shell {
-    width: min(100% - 20px, 1420px);
+    width: min(100% - 20px, 1480px);
     padding-top: 10px;
   }
 
@@ -570,11 +558,6 @@ h1 {
   .flower-grid {
     grid-template-columns: 1fr;
     gap: 14px;
-  }
-
-  .stem,
-  .flower-card::after {
-    display: none;
   }
 
   .garden-stage {
@@ -595,5 +578,9 @@ h1 {
   .large-flower {
     width: 72px;
     height: 72px;
+  }
+
+  h1 {
+    font-size: clamp(2.8rem, 17vw, 5.3rem);
   }
 }

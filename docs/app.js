@@ -3,6 +3,7 @@ const DATA_URL = "./data/scientists.json";
 const flowerGrid = document.getElementById("flowerGrid");
 const searchInput = document.getElementById("searchInput");
 const fieldFilter = document.getElementById("fieldFilter");
+const regionFilter = document.getElementById("regionFilter");
 const centuryFilter = document.getElementById("centuryFilter");
 const resetFilters = document.getElementById("resetFilters");
 const emptyState = document.getElementById("emptyState");
@@ -12,6 +13,7 @@ const details = {
   name: document.getElementById("detailName"),
   meta: document.getElementById("detailMeta"),
   field: document.getElementById("detailField"),
+  origin: document.getElementById("detailOrigin"),
   year: document.getElementById("detailYear"),
   breakthrough: document.getElementById("detailBreakthrough"),
   discovery: document.getElementById("detailDiscovery"),
@@ -35,6 +37,13 @@ function populateFilters() {
     fieldFilter.appendChild(option);
   });
 
+  unique(scientists.map((scientist) => scientist.region)).forEach((region) => {
+    const option = document.createElement("option");
+    option.value = region;
+    option.textContent = region;
+    regionFilter.appendChild(option);
+  });
+
   unique(scientists.map((scientist) => scientist.century)).forEach((century) => {
     const option = document.createElement("option");
     option.value = century;
@@ -46,12 +55,15 @@ function populateFilters() {
 function matchesFilters(scientist) {
   const search = searchInput.value.trim().toLowerCase();
   const field = fieldFilter.value;
+  const region = regionFilter.value;
   const century = centuryFilter.value;
 
   const text = [
     scientist.name,
     scientist.field,
     scientist.century,
+    scientist.origin,
+    scientist.region,
     scientist.branch,
     scientist.discovery,
     scientist.struggle,
@@ -63,6 +75,7 @@ function matchesFilters(scientist) {
   return (
     (!search || text.includes(search)) &&
     (field === "all" || scientist.field === field) &&
+    (region === "all" || scientist.region === region) &&
     (century === "all" || scientist.century === century)
   );
 }
@@ -73,6 +86,7 @@ function selectScientist(scientist) {
   details.name.textContent = scientist.name;
   details.meta.textContent = `${scientist.years} · ${scientist.century}`;
   details.field.textContent = scientist.field;
+  details.origin.textContent = scientist.origin;
   details.year.textContent = `Breakthrough ${scientist.breakthroughYear}`;
   details.breakthrough.textContent = scientist.branch;
   details.discovery.textContent = scientist.discovery;
@@ -104,7 +118,7 @@ function createFlowerCard(scientist) {
     <div class="mini-story" aria-label="Short discovery labels">
       <span>${scientist.breakthroughYear}</span>
       <span>${scientist.leafLabel}</span>
-      <span>${scientist.century}</span>
+      <span class="region-tag">${scientist.region}</span>
     </div>
   `;
 
@@ -124,7 +138,7 @@ function renderGarden() {
   });
 
   emptyState.style.display = filtered.length ? "none" : "block";
-  visibleCount.textContent = `${filtered.length} visible`;
+  visibleCount.textContent = `${filtered.length} visible · ${scientists.length} total`;
 
   const selectedStillVisible = filtered.some((scientist) => scientist.id === selectedId);
 
@@ -139,6 +153,7 @@ function renderGarden() {
 function resetGarden() {
   searchInput.value = "";
   fieldFilter.value = "all";
+  regionFilter.value = "all";
   centuryFilter.value = "all";
   selectedId = scientists[0]?.id || null;
   renderGarden();
@@ -166,6 +181,7 @@ async function init() {
 
 searchInput.addEventListener("input", renderGarden);
 fieldFilter.addEventListener("change", renderGarden);
+regionFilter.addEventListener("change", renderGarden);
 centuryFilter.addEventListener("change", renderGarden);
 resetFilters.addEventListener("click", resetGarden);
 

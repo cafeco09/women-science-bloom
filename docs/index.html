@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A calm interactive garden of women scientists, their breakthroughs, discoveries, struggles and impact." />
+  <meta name="description" content="A calm interactive garden of 20 women scientists from across the world, their breakthroughs, discoveries, struggles and impact." />
   <title>The Women Who Made Science Bloom</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -11,11 +11,12 @@
   <main class="page-shell">
     <header class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Interactive science garden</p>
+        <p class="eyebrow">Interactive global science garden</p>
         <h1>The Women Who Made Science Bloom</h1>
         <p class="hero-text">
-          Explore women scientists through a simple garden metaphor: choose a flower, then follow her
-          breakthrough branch, discovery leaf, struggle thorn and lasting impact seed.
+          Explore 20 women scientists from across the world through a simple garden metaphor:
+          choose a flower, then follow her breakthrough branch, discovery leaf, struggle thorn
+          and lasting impact seed.
         </p>
       </div>
 
@@ -45,6 +46,13 @@
       </label>
 
       <label>
+        <span>Region</span>
+        <select id="regionFilter">
+          <option value="all">All regions</option>
+        </select>
+      </label>
+
+      <label>
         <span>Century</span>
         <select id="centuryFilter">
           <option value="all">All centuries</option>
@@ -65,10 +73,6 @@
         </div>
 
         <div class="garden-stage">
-          <div class="stem" aria-hidden="true">
-            <span class="root-label">Science</span>
-          </div>
-
           <div id="flowerGrid" class="flower-grid"></div>
 
           <div id="emptyState" class="empty-state">
@@ -92,6 +96,7 @@
 
         <div class="story-summary">
           <span id="detailField" class="field-pill">Field</span>
+          <span id="detailOrigin" class="origin-pill">Origin</span>
           <span id="detailYear" class="year-pill">Year</span>
         </div>
 
