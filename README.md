@@ -26,3 +26,8 @@ Open:
 ```text
 http://localhost:8000
 ```
+
+
+## Detail header fix
+
+This version fixes the small overlap in the floating detail layer by stacking the field, origin and breakthrough pills beneath the scientist name instead of forcing them into the same row.

@@ -782,3 +782,56 @@ h1,h2,h3,p,blockquote { margin-top: 0; }
     grid-template-columns: 1fr;
   }
 }
+
+
+/* --- Detail-layer overlap fix ---
+   The previous header used a two-column grid. On some widths the field/origin/year
+   pills collided with the title. This stacks the metadata pills cleanly beneath
+   the name area and reserves space for the close button. */
+.detail-layer {
+  width: min(720px, calc(100% - 20px));
+}
+
+.layer-head {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
+  padding-right: 48px !important;
+}
+
+.person-head {
+  align-items: center;
+  min-width: 0;
+}
+
+.person-head > div {
+  min-width: 0;
+}
+
+.layer-head h2 {
+  overflow-wrap: anywhere;
+}
+
+.layer-pills {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: flex-start !important;
+  align-content: start !important;
+  gap: 6px !important;
+  padding-left: 63px;
+  max-width: 100%;
+}
+
+.layer-pills span {
+  max-width: 100%;
+}
+
+.close-layer {
+  z-index: 50;
+}
+
+@media (max-width: 760px) {
+  .layer-pills {
+    padding-left: 0;
+  }
+}
