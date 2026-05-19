@@ -30,9 +30,9 @@ body {
     linear-gradient(180deg, #fff9f2 0%, #f1e2d1 48%, #e6d4c1 100%);
 }
 
-/* HARD no-scroll frame */
+/* Hard fullscreen frame */
 .app-shell {
-  width: min(1560px, calc(100vw - 14px));
+  width: min(1560px, calc(100vw - 12px));
   height: 100vh;
   height: 100svh;
   margin: 0 auto;
@@ -43,7 +43,7 @@ body {
 }
 
 .quote-ribbon,
-.tree-panel,
+.tree-area,
 .sidebar {
   background: var(--card);
   border: 1px solid rgba(255, 255, 255, 0.78);
@@ -78,30 +78,47 @@ body {
   color: var(--rose-dark);
 }
 
-/* FORCE RIGHT SIDEBAR.
-   This deliberately avoids stacking on desktop/laptop so the filter cannot appear above the tree. */
-.workspace {
+/* This is the key fix: tree + right panel in one row, no desktop stacking. */
+.dashboard {
   min-height: 0;
   height: 100%;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 286px;
+  grid-template-columns: minmax(0, 1fr) 292px;
   gap: 8px;
 }
 
-.tree-panel {
+.tree-area {
+  position: relative;
   min-width: 0;
   min-height: 0;
-  padding: 10px;
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
-  gap: 7px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.74), transparent 24%),
+    linear-gradient(180deg, #fffdf7 0%, #f5ece2 30%, #ecdcc7 58%, #e0cfbc 100%);
 }
 
-.tree-header {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 342px;
-  gap: 10px;
-  align-items: center;
+.tree-area::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 206, 223, 0.22), transparent 24%),
+    radial-gradient(circle at 80% 24%, rgba(255, 236, 166, 0.18), transparent 22%);
+  animation: glowShift 12s ease-in-out infinite alternate;
+}
+
+.title-card {
+  position: absolute;
+  z-index: 14;
+  left: 14px;
+  top: 14px;
+  width: min(360px, 34vw);
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.74);
+  border-radius: 18px;
+  background: rgba(255, 251, 246, 0.78);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 26px rgba(52, 28, 32, 0.09);
 }
 
 .eyebrow {
@@ -111,7 +128,7 @@ body {
   border-radius: 999px;
   background: rgba(195, 73, 102, 0.11);
   color: var(--rose-dark);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   font-weight: 850;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -119,7 +136,7 @@ body {
 
 .eyebrow.small {
   margin-bottom: 4px;
-  font-size: 0.56rem;
+  font-size: 0.55rem;
 }
 
 h1,
@@ -130,63 +147,47 @@ blockquote {
   margin-top: 0;
 }
 
-h1 {
-  margin-bottom: 3px;
+.title-card h1 {
+  margin: 0 0 4px;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.7rem, 2.6vw, 2.65rem);
-  line-height: 0.92;
+  font-size: clamp(1.5rem, 2.2vw, 2.35rem);
+  line-height: 0.94;
   letter-spacing: -0.06em;
 }
 
-.subtitle {
+.title-card p:last-child {
   margin: 0;
-  max-width: 780px;
   color: var(--muted);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   line-height: 1.25;
 }
 
-.legend-strip {
+.legend-card {
+  position: absolute;
+  z-index: 14;
+  right: 14px;
+  top: 14px;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(58px, 1fr));
   gap: 5px;
+  width: min(470px, 42vw);
 }
 
-.legend-strip span {
-  min-height: 42px;
+.legend-card span {
+  min-height: 40px;
   padding: 7px 6px;
   border: 1px solid var(--line);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.76);
   color: var(--muted);
-  font-size: 0.66rem;
-  line-height: 1.12;
+  font-size: 0.62rem;
+  line-height: 1.1;
+  box-shadow: 0 6px 14px rgba(52, 28, 32, 0.06);
 }
 
-.legend-strip b {
+.legend-card b {
   display: block;
   color: var(--ink);
-}
-
-.tree-stage {
-  position: relative;
-  min-height: 0;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  background:
-    radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.74), transparent 24%),
-    linear-gradient(180deg, #fffdf7 0%, #f5ece2 30%, #ecdcc7 58%, #e0cfbc 100%);
-}
-
-.tree-stage::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(255, 206, 223, 0.22), transparent 24%),
-    radial-gradient(circle at 80% 24%, rgba(255, 236, 166, 0.18), transparent 22%);
-  animation: glowShift 12s ease-in-out infinite alternate;
 }
 
 .sky-glow {
@@ -254,7 +255,7 @@ h1 {
 .node-layer {
   position: absolute;
   inset: 0;
-  z-index: 5;
+  z-index: 6;
 }
 
 .scientist-node {
@@ -793,9 +794,7 @@ h1 {
   to { transform: rotate(2deg) translateY(2px); }
 }
 
-/* Important:
-   Do NOT stack the right filter above the tree on laptop/desktop widths.
-   Only change layout on genuinely narrow phone screens. */
+/* Only phone widths stack. Desktop and laptop stay side-by-side. */
 @media (max-width: 640px) {
   body {
     overflow: auto;
@@ -807,7 +806,7 @@ h1 {
     grid-template-rows: 30px auto;
   }
 
-  .workspace {
+  .dashboard {
     grid-template-columns: 1fr;
   }
 
@@ -815,16 +814,22 @@ h1 {
     order: -1;
   }
 
-  .tree-header {
-    grid-template-columns: 1fr;
-  }
-
-  .legend-strip {
-    grid-template-columns: 1fr;
-  }
-
-  .tree-stage {
+  .tree-area {
     height: 920px;
+  }
+
+  .title-card,
+  .legend-card {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    width: auto;
+    margin: 10px;
+  }
+
+  .legend-card {
+    grid-template-columns: 1fr;
   }
 
   .detail-layer {

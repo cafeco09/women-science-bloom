@@ -42,13 +42,14 @@ const regionChart = document.getElementById("regionChart");
 
 let scientists = [];
 let selectedId = null;
+let hasOpenedDetail = false;
 
 const slots = [
-  { x: 50, y: 13 }, { x: 36, y: 16 }, { x: 64, y: 16 },
-  { x: 22, y: 24 }, { x: 43, y: 25 }, { x: 57, y: 25 }, { x: 78, y: 24 },
-  { x: 10, y: 39 }, { x: 29, y: 40 }, { x: 41, y: 41 }, { x: 59, y: 41 }, { x: 71, y: 40 }, { x: 90, y: 39 },
-  { x: 18, y: 58 }, { x: 34, y: 59 }, { x: 66, y: 59 }, { x: 82, y: 58 },
-  { x: 26, y: 74 }, { x: 50, y: 75 }, { x: 74, y: 74 }
+  { x: 50, y: 15 }, { x: 37, y: 18 }, { x: 63, y: 18 },
+  { x: 22, y: 27 }, { x: 43, y: 28 }, { x: 57, y: 28 }, { x: 78, y: 27 },
+  { x: 11, y: 42 }, { x: 29, y: 42 }, { x: 42, y: 44 }, { x: 58, y: 44 }, { x: 71, y: 42 }, { x: 89, y: 42 },
+  { x: 20, y: 60 }, { x: 35, y: 61 }, { x: 50, y: 64 }, { x: 65, y: 61 }, { x: 80, y: 60 },
+  { x: 38, y: 78 }, { x: 62, y: 78 }
 ];
 
 function unique(values) {
@@ -176,6 +177,7 @@ function renderNodes() {
 
     button.addEventListener("click", () => {
       selectedId = scientist.id;
+      hasOpenedDetail = true;
       setDetails(scientist);
       renderNodes();
     });
@@ -183,8 +185,10 @@ function renderNodes() {
     nodeLayer.appendChild(button);
   });
 
-  const selected = visible.find((s) => s.id === selectedId) || visible[0];
-  setDetails(selected);
+  if (hasOpenedDetail) {
+    const selected = visible.find((s) => s.id === selectedId) || visible[0];
+    setDetails(selected);
+  }
 }
 
 function setDetails(scientist) {
@@ -210,6 +214,7 @@ function setDetails(scientist) {
 
 function countBy(items, key) {
   const map = new Map();
+
   items.forEach((item) => {
     map.set(item[key], (map.get(item[key]) || 0) + 1);
   });
@@ -243,7 +248,7 @@ function renderTimeline(sorted, selected) {
   sorted.forEach((scientist) => {
     const bar = document.createElement("div");
     const relative = scientist.breakthroughYear - minYear;
-    const height = 22 + (relative / span) * 68;
+    const height = 18 + (relative / span) * 50;
 
     bar.className = "timeline-bar" + (scientist.id === selected.id ? " selected" : "");
     bar.style.height = `${height}px`;
@@ -289,6 +294,8 @@ function resetTree() {
   regionFilter.value = "all";
   centuryFilter.value = "all";
   selectedId = scientists[0]?.id || null;
+  hasOpenedDetail = false;
+  detailLayer.classList.add("hidden");
   renderNodes();
 }
 

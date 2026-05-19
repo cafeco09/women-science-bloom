@@ -1,17 +1,17 @@
 # The Women Who Made Science Bloom
 
-A forced right-sidebar, no-scroll one-page version.
+Fullscreen right-sidebar version.
 
-## What this version fixes
+## What this fixes
 
-The filter panel was appearing above the tree because a responsive breakpoint moved the sidebar into a stacked layout. This version keeps the layout side-by-side on laptop/desktop widths.
+The earlier layout made the title area too large, which compressed the tree into the bottom of the frame. This version removes the large header from document flow and places the title as a small overlay card inside the tree.
 
-- Quote ribbon is only 30px high.
-- Tree and filters sit in the same row.
-- Filter panel is fixed on the right.
-- Tree is visible immediately on page load.
+- Tree uses the full left frame.
+- Filter stays fixed on the right.
+- Title is compact and does not push the tree down.
+- Details stay hidden until a scientist is clicked.
 - No desktop scroll.
-- Layout only stacks on very narrow phone screens under 640px.
+- Layout only stacks below 640px width.
 
 ## Run locally
 
