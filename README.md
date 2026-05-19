@@ -1,48 +1,29 @@
 # The Women Who Made Science Bloom
 
-A GitHub Pages interactive project built as a living tree of women scientists.
+A GitHub Pages interactive project built as a living tree of women scientists, now with a **bottom analysis drawer**.
 
-## What this version changes
+## What changed in this version
 
-This version returns to the original metaphor properly:
+The previous tree tried to show too many full names directly on the canopy, which created overlap and reduced readability.
 
-- A real tree with a **trunk**, **boughs** and **branch-end blossoms**
-- A **dynamic environment** with floating pollen, drifting petals, moving sky glows and layered ground
-- The selected blossom reveals a **leaf**, **thorn** and **seed** directly on the tree
-- The side panel gives the fuller story
+This version fixes that by:
 
-## Visual metaphor
+- keeping the tree itself visually clean
+- showing **names on hover**
+- opening a **bottom analysis card / drawer** when a flower is clicked
+- adding **comparative charts** and quick metrics inside that drawer
 
-- **Flower** = scientist
-- **Branch** = breakthrough moment
-- **Leaf** = discovery
-- **Thorn** = barrier or struggle
-- **Seed** = long-term impact
+## Included analysis
 
-## Dataset
+When a scientist is selected, the drawer shows:
 
-The dataset includes 20 women scientists from:
-- Africa
-- Asia
-- Europe
-- Latin America
-- Middle East
-- North America
-- Oceania
-
-## Project structure
-
-```text
-women-science-bloom/
-  README.md
-  docs/
-    .nojekyll
-    index.html
-    styles.css
-    app.js
-    data/
-      scientists.json
-```
+- breakthrough year
+- field peer count
+- region peer count
+- era rank in the full timeline
+- timeline chart
+- field distribution chart
+- region distribution chart
 
 ## Run locally
 

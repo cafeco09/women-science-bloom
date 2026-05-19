@@ -24,6 +24,17 @@ const details = {
   source: document.getElementById("detailSource")
 };
 
+const metrics = {
+  breakthroughYear: document.getElementById("metricBreakthroughYear"),
+  fieldPeers: document.getElementById("metricFieldPeers"),
+  regionPeers: document.getElementById("metricRegionPeers"),
+  eraRank: document.getElementById("metricEraRank")
+};
+
+const timelineChart = document.getElementById("timelineChart");
+const fieldChart = document.getElementById("fieldChart");
+const regionChart = document.getElementById("regionChart");
+
 let scientists = [];
 let selectedId = null;
 
@@ -38,14 +49,12 @@ function populateFilters() {
     option.textContent = field;
     fieldFilter.appendChild(option);
   });
-
   unique(scientists.map((s) => s.region)).forEach((region) => {
     const option = document.createElement("option");
     option.value = region;
     option.textContent = region;
     regionFilter.appendChild(option);
   });
-
   unique(scientists.map((s) => s.century)).forEach((century) => {
     const option = document.createElement("option");
     option.value = century;
@@ -61,17 +70,8 @@ function matchesFilters(scientist) {
   const century = centuryFilter.value;
 
   const text = [
-    scientist.name,
-    scientist.field,
-    scientist.region,
-    scientist.origin,
-    scientist.century,
-    scientist.branch,
-    scientist.discovery,
-    scientist.struggle,
-    scientist.impact,
-    scientist.keywords,
-    scientist.leafLabel
+    scientist.name, scientist.field, scientist.region, scientist.origin, scientist.century,
+    scientist.branch, scientist.discovery, scientist.struggle, scientist.impact, scientist.keywords, scientist.leafLabel
   ].join(" ").toLowerCase();
 
   return (
@@ -95,6 +95,77 @@ function setDetails(scientist) {
   details.impact.textContent = scientist.impact;
   details.source.textContent = `Open source · ${scientist.source}`;
   details.source.href = scientist.sourceUrl;
+  updateAnalysis(scientist);
+}
+
+function updateAnalysis(scientist) {
+  const sorted = [...scientists].sort((a, b) => a.breakthroughYear - b.breakthroughYear);
+  const rank = sorted.findIndex((s) => s.id === scientist.id) + 1;
+  const fieldPeers = scientists.filter((s) => s.field === scientist.field).length;
+  const regionPeers = scientists.filter((s) => s.region === scientist.region).length;
+
+  metrics.breakthroughYear.textContent = scientist.breakthroughYear;
+  metrics.fieldPeers.textContent = fieldPeers;
+  metrics.regionPeers.textContent = regionPeers;
+  metrics.eraRank.textContent = `${rank}/${scientists.length}`;
+
+  renderTimeline(sorted, scientist);
+  renderDistribution(fieldChart, countBy(scientists, "field"), scientist.field);
+  renderDistribution(regionChart, countBy(scientists, "region"), scientist.region);
+}
+
+function countBy(items, key) {
+  const map = new Map();
+  items.forEach((item) => map.set(item[key], (map.get(item[key]) || 0) + 1));
+  return [...map.entries()].map(([label, value]) => ({ label, value }))
+    .sort((a, b) => b.value - a.value || a.label.localeCompare(b.label));
+}
+
+function renderTimeline(sorted, selected) {
+  timelineChart.innerHTML = "";
+  const minYear = sorted[0].breakthroughYear;
+  const maxYear = sorted[sorted.length - 1].breakthroughYear;
+  const span = Math.max(1, maxYear - minYear);
+
+  sorted.forEach((scientist) => {
+    const bar = document.createElement("div");
+    const relative = scientist.breakthroughYear - minYear;
+    const height = 24 + (relative / span) * 76;
+    bar.className = "timeline-bar" + (scientist.id === selected.id ? " selected" : "");
+    bar.style.height = `${height}px`;
+    bar.dataset.year = scientist.breakthroughYear;
+    bar.dataset.name = scientist.name;
+    timelineChart.appendChild(bar);
+  });
+}
+
+function renderDistribution(container, data, highlightLabel) {
+  container.innerHTML = "";
+  const max = Math.max(...data.map((d) => d.value), 1);
+
+  data.forEach((item) => {
+    const row = document.createElement("div");
+    row.className = "bar-row" + (item.label === highlightLabel ? " highlight" : "");
+
+    const label = document.createElement("div");
+    label.className = "bar-label";
+    label.textContent = item.label;
+
+    const track = document.createElement("div");
+    track.className = "bar-track";
+
+    const fill = document.createElement("div");
+    fill.className = "bar-fill";
+    fill.style.width = `${(item.value / max) * 100}%`;
+    track.appendChild(fill);
+
+    const value = document.createElement("div");
+    value.className = "bar-value";
+    value.textContent = item.value;
+
+    row.append(label, track, value);
+    container.appendChild(row);
+  });
 }
 
 function svgEl(tag, attrs = {}) {
@@ -146,9 +217,7 @@ function getSlots(count) {
   const slots = [];
   for (const tier of tiers) {
     for (const x of tier.xs) {
-      if (slots.length < count) {
-        slots.push({ x, y: tier.y });
-      }
+      if (slots.length < count) slots.push({ x, y: tier.y });
     }
   }
   return slots;
@@ -187,7 +256,6 @@ function renderCanopyLeaves(width, height) {
 function renderStaticTree(width, height) {
   const cx = width * 0.5;
   const rootY = height * 0.92;
-  const trunkMidY = height * 0.72;
   const trunkTopY = height * 0.53;
 
   const trunk = svgEl("path", {
@@ -265,6 +333,16 @@ function makeThornTag(x, y, rotation = 0) {
   return group;
 }
 
+function makeHoverLabel(x, y, scientist) {
+  const group = svgEl("g", { class: "hover-label", transform: `translate(${x}, ${y - 36})` });
+  const labelWidth = Math.max(82, Math.min(140, scientist.name.length * 7.2));
+  group.appendChild(svgEl("rect", { x: -labelWidth / 2, y: -14, width: labelWidth, height: 28 }));
+  const text = svgEl("text", { x: 0, y: 4 });
+  text.textContent = scientist.name;
+  group.appendChild(text);
+  return group;
+}
+
 function makeBlossom(endX, endY, scientist, selected = false) {
   const group = svgEl("g", {
     class: `blossom-group ${selected ? "active" : ""}`,
@@ -274,7 +352,6 @@ function makeBlossom(endX, endY, scientist, selected = false) {
   });
   group.dataset.id = scientist.id;
 
-  const radius = 15;
   const petals = 6;
   for (let i = 0; i < petals; i += 1) {
     const angle = (Math.PI * 2 * i) / petals;
@@ -290,11 +367,8 @@ function makeBlossom(endX, endY, scientist, selected = false) {
     }));
   }
 
-  group.appendChild(svgEl("circle", { class: "blossom-centre", cx: endX, cy: endY, r: radius * 0.55 }));
-
-  const label = svgEl("text", { class: "blossom-label", x: endX, y: endY + 32 });
-  label.textContent = scientist.name;
-  group.appendChild(label);
+  group.appendChild(svgEl("circle", { class: "blossom-centre", cx: endX, cy: endY, r: 8.2 }));
+  group.appendChild(makeHoverLabel(endX, endY, scientist));
 
   if (selected) {
     group.appendChild(makeDiscoveryLeaf(endX + 22, endY - 18, scientist.leafLabel || "discovery"));
@@ -305,12 +379,14 @@ function makeBlossom(endX, endY, scientist, selected = false) {
   group.addEventListener("click", () => {
     selectedId = scientist.id;
     renderTree();
+    document.getElementById("analysisDrawer").scrollIntoView({ behavior: "smooth", block: "nearest" });
   });
   group.addEventListener("keydown", (event) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       selectedId = scientist.id;
       renderTree();
+      document.getElementById("analysisDrawer").scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
   });
 
@@ -318,22 +394,21 @@ function makeBlossom(endX, endY, scientist, selected = false) {
 }
 
 function clearRenderedSvg() {
-  [...treeSvg.querySelectorAll(":scope > g, :scope > path, :scope > ellipse, :scope > text")].forEach((node) => node.remove());
+  [...treeSvg.querySelectorAll(":scope > g, :scope > path, :scope > ellipse")].forEach((node) => node.remove());
 }
 
 function renderTree() {
-  const visibleScientists = getVisibleScientists();
+  const visibleScientists = scientists.filter(matchesFilters);
   visibleCount.textContent = `${visibleScientists.length} visible · ${scientists.length} total`;
   emptyState.style.display = visibleScientists.length ? "none" : "block";
 
   const width = treeSvg.clientWidth || treeSvg.parentElement.clientWidth || 1000;
   const height = treeSvg.clientHeight || treeSvg.parentElement.clientHeight || 800;
+
   clearRenderedSvg();
   const anchors = renderStaticTree(width, height);
 
-  if (!visibleScientists.length) {
-    return;
-  }
+  if (!visibleScientists.length) return;
 
   const slots = getSlots(visibleScientists.length);
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A living interactive tree of women scientists, with a dynamic environment and global dataset." />
+  <meta name="description" content="A living interactive tree of women scientists with a bottom analysis drawer." />
   <title>The Women Who Made Science Bloom</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -17,8 +17,8 @@
         <p class="eyebrow">Living science tree</p>
         <h1>The Women Who Made Science Bloom</h1>
         <p class="hero-text">
-          A global, interactive tree of women scientists. Each flower is a scientist. The branch is her breakthrough.
-          The leaf is the discovery. The thorn is the struggle. The seed is the impact.
+          Click any blossom to open a bottom analysis drawer with the scientist’s story and comparative insights.
+          The tree stays clean; the data appears when you need it.
         </p>
       </div>
 
@@ -28,7 +28,7 @@
           <span><b>🌸 Flower</b> scientist</span>
           <span><b>🌿 Branch</b> breakthrough</span>
           <span><b>🍃 Leaf</b> discovery</span>
-          <span><b>🪡 Thorn</b> barrier</span>
+          <span><b>🪡 Thorn</b> struggle</span>
           <span><b>🌱 Seed</b> impact</span>
         </div>
       </section>
@@ -42,34 +42,28 @@
 
       <label>
         <span>Field</span>
-        <select id="fieldFilter">
-          <option value="all">All fields</option>
-        </select>
+        <select id="fieldFilter"><option value="all">All fields</option></select>
       </label>
 
       <label>
         <span>Region</span>
-        <select id="regionFilter">
-          <option value="all">All regions</option>
-        </select>
+        <select id="regionFilter"><option value="all">All regions</option></select>
       </label>
 
       <label>
         <span>Century</span>
-        <select id="centuryFilter">
-          <option value="all">All centuries</option>
-        </select>
+        <select id="centuryFilter"><option value="all">All centuries</option></select>
       </label>
 
       <button id="resetFilters" type="button">Reset tree</button>
     </section>
 
-    <section class="dashboard">
-      <section class="tree-panel" aria-label="Interactive scientist tree">
+    <section class="tree-shell">
+      <div class="tree-panel">
         <div class="panel-heading">
           <div>
             <p class="eyebrow small">Tree view</p>
-            <h2>Click a blossom</h2>
+            <h2>Hover for a name. Click for analysis.</h2>
           </div>
           <p id="visibleCount" class="count-pill">0 visible</p>
         </div>
@@ -103,75 +97,121 @@
                 <stop offset="0%" stop-color="#9fd486"/>
                 <stop offset="100%" stop-color="#427242"/>
               </linearGradient>
-
-              <radialGradient id="seedGradient" cx="50%" cy="45%" r="75%">
-                <stop offset="0%" stop-color="#ffe7ac"/>
-                <stop offset="100%" stop-color="#cf9536"/>
-              </radialGradient>
             </defs>
           </svg>
 
           <div class="ground ground-back" aria-hidden="true"></div>
           <div class="ground ground-front" aria-hidden="true"></div>
-          <div class="tree-note">The selected blossom reveals its leaf, thorn and seed.</div>
+          <div class="tree-note">The canopy stays clean. Names appear on hover; analysis opens below.</div>
 
           <div id="emptyState" class="empty-state">
             <h3>No blossoms found</h3>
             <p>Try a wider filter or clear the search.</p>
           </div>
         </div>
-      </section>
+      </div>
 
-      <aside class="story-panel" aria-live="polite" aria-label="Selected scientist story">
-        <div class="story-top">
+      <section id="analysisDrawer" class="analysis-drawer open" aria-live="polite">
+        <div class="drawer-head">
           <div>
-            <p class="eyebrow small">Selected flower</p>
+            <p class="eyebrow small">Analysis drawer</p>
             <h2 id="detailName">Loading…</h2>
             <p id="detailMeta" class="meta-line"></p>
           </div>
-          <div class="large-flower" aria-hidden="true"><span></span></div>
+          <div class="drawer-pills">
+            <span id="detailField" class="field-pill">Field</span>
+            <span id="detailOrigin" class="origin-pill">Origin</span>
+            <span id="detailYear" class="year-pill">Year</span>
+          </div>
         </div>
 
-        <div class="story-summary">
-          <span id="detailField" class="field-pill">Field</span>
-          <span id="detailOrigin" class="origin-pill">Origin</span>
-          <span id="detailYear" class="year-pill">Year</span>
+        <div class="metric-grid">
+          <article class="metric-card">
+            <span class="metric-label">Breakthrough year</span>
+            <strong id="metricBreakthroughYear">—</strong>
+            <small>Position in the full 20-scientist timeline</small>
+          </article>
+          <article class="metric-card">
+            <span class="metric-label">Field peers</span>
+            <strong id="metricFieldPeers">—</strong>
+            <small>Scientists in the same field family</small>
+          </article>
+          <article class="metric-card">
+            <span class="metric-label">Region peers</span>
+            <strong id="metricRegionPeers">—</strong>
+            <small>Scientists from the same region grouping</small>
+          </article>
+          <article class="metric-card">
+            <span class="metric-label">Era rank</span>
+            <strong id="metricEraRank">—</strong>
+            <small>Ordered by breakthrough year</small>
+          </article>
         </div>
 
-        <section class="story-step branch-step">
-          <div class="step-icon">🌿</div>
-          <div>
-            <h3>Branch · breakthrough moment</h3>
-            <p id="detailBreakthrough"></p>
-          </div>
-        </section>
+        <div class="drawer-layout">
+          <div class="story-column">
+            <section class="story-step branch-step">
+              <div class="step-icon">🌿</div>
+              <div>
+                <h3>Branch · breakthrough moment</h3>
+                <p id="detailBreakthrough"></p>
+              </div>
+            </section>
 
-        <section class="story-step leaf-step">
-          <div class="step-icon">🍃</div>
-          <div>
-            <h3>Leaf · discovery</h3>
-            <p id="detailDiscovery"></p>
-          </div>
-        </section>
+            <section class="story-step leaf-step">
+              <div class="step-icon">🍃</div>
+              <div>
+                <h3>Leaf · discovery</h3>
+                <p id="detailDiscovery"></p>
+              </div>
+            </section>
 
-        <section class="story-step thorn-step">
-          <div class="step-icon">🪡</div>
-          <div>
-            <h3>Thorn · struggle</h3>
-            <p id="detailStruggle"></p>
-          </div>
-        </section>
+            <section class="story-step thorn-step">
+              <div class="step-icon">🪡</div>
+              <div>
+                <h3>Thorn · struggle</h3>
+                <p id="detailStruggle"></p>
+              </div>
+            </section>
 
-        <section class="story-step seed-step">
-          <div class="step-icon">🌱</div>
-          <div>
-            <h3>Seed · lasting impact</h3>
-            <p id="detailImpact"></p>
-          </div>
-        </section>
+            <section class="story-step seed-step">
+              <div class="step-icon">🌱</div>
+              <div>
+                <h3>Seed · lasting impact</h3>
+                <p id="detailImpact"></p>
+              </div>
+            </section>
 
-        <a id="detailSource" class="source-link" href="#" target="_blank" rel="noreferrer">Open source</a>
-      </aside>
+            <a id="detailSource" class="source-link" href="#" target="_blank" rel="noreferrer">Open source</a>
+          </div>
+
+          <div class="chart-column">
+            <article class="chart-card">
+              <div class="chart-head">
+                <h3>Timeline position</h3>
+                <p>All scientists by breakthrough year</p>
+              </div>
+              <div id="timelineChart" class="timeline-chart"></div>
+            </article>
+
+            <article class="chart-card">
+              <div class="chart-head">
+                <h3>Field distribution</h3>
+                <p>How represented is this scientist’s field?</p>
+              </div>
+              <div id="fieldChart" class="bar-chart"></div>
+            </article>
+
+            <article class="chart-card">
+              <div class="chart-head">
+                <h3>Regional distribution</h3>
+                <p>How represented is this scientist’s region?</p>
+              </div>
+              <div id="regionChart" class="bar-chart"></div>
+            </article>
+          </div>
+        </div>
+      </section>
     </section>
   </main>
 
