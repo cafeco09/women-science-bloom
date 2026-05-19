@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A one-page interactive tree of women scientists with structured face nodes, a right-hand filter panel and an in-tree detail layer." />
+  <meta name="description" content="A visible one-page interactive tree of women scientists with portraits, right-hand filters, moving quotes and an in-tree detail layer." />
   <title>The Women Who Made Science Bloom</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -13,36 +13,29 @@
       <div class="quote-track" id="quoteTrack"></div>
     </section>
 
-    <header class="topbar">
-      <div class="hero-copy">
-        <p class="eyebrow">Interactive knowledge tree</p>
-        <h1>The Women Who Made Science Bloom</h1>
-        <p class="subtitle">Portraits and names stay directly on the tree. Tap any scientist to open a floating insight layer without leaving the main frame.</p>
-      </div>
-      <div class="legend-inline">
-        <span><b>Portrait</b> scientist</span>
-        <span><b>Branch</b> breakthrough</span>
-        <span><b>Leaf</b> discovery</span>
-        <span><b>Thorn</b> struggle</span>
-        <span><b>Seed</b> impact</span>
-      </div>
-    </header>
-
     <section class="workspace">
-      <section class="tree-card">
-        <div class="tree-head">
+      <section class="tree-panel">
+        <header class="tree-header">
           <div>
-            <p class="eyebrow small">Structured tree view</p>
-            <h2>Clean canopy · no label collisions</h2>
+            <p class="eyebrow">Interactive Knowledge Tree</p>
+            <h1>The Women Who Made Science Bloom</h1>
+            <p class="subtitle">Faces and names sit on a structured tree. Click a scientist to open her story and analysis as a layer over the tree.</p>
           </div>
-          <p class="hint-text">Details open inside the tree, not below it.</p>
-        </div>
+          <div class="legend-strip" aria-label="Legend">
+            <span><b>Face</b> scientist</span>
+            <span><b>Branch</b> breakthrough</span>
+            <span><b>Leaf</b> discovery</span>
+            <span><b>Thorn</b> struggle</span>
+            <span><b>Seed</b> impact</span>
+          </div>
+        </header>
 
         <div class="tree-stage" id="treeStage">
           <div class="sky-glow glow-one" aria-hidden="true"></div>
           <div class="sky-glow glow-two" aria-hidden="true"></div>
           <div id="pollenLayer" class="pollen-layer" aria-hidden="true"></div>
-          <svg id="treeSvg" role="img" aria-label="Interactive tree of women scientists">
+
+          <svg class="tree-lines" viewBox="0 0 1000 720" preserveAspectRatio="none" aria-hidden="true">
             <defs>
               <linearGradient id="trunkGradient" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0%" stop-color="#6b432b"/>
@@ -53,29 +46,55 @@
                 <stop offset="0%" stop-color="#8e5d3c"/>
                 <stop offset="100%" stop-color="#65422d"/>
               </linearGradient>
-              <linearGradient id="portraitFrame" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#fff8fb"/>
-                <stop offset="100%" stop-color="#f5c7d5"/>
-              </linearGradient>
             </defs>
+            <path class="main-trunk" d="M500 690 C485 600 525 505 500 390" />
+            <path class="main-branch" d="M500 500 C395 455 335 365 220 260" />
+            <path class="main-branch" d="M500 500 C605 455 665 365 780 260" />
+            <path class="main-branch" d="M500 425 C430 340 420 250 350 150" />
+            <path class="main-branch" d="M500 425 C570 340 580 250 650 150" />
+            <path class="main-branch" d="M500 390 C500 295 500 205 500 95" />
+            <path class="twig-line" d="M350 150 C260 150 180 165 105 210" />
+            <path class="twig-line" d="M350 150 C300 120 255 90 205 70" />
+            <path class="twig-line" d="M500 95 C420 75 350 65 285 70" />
+            <path class="twig-line" d="M500 95 C580 75 650 65 715 70" />
+            <path class="twig-line" d="M650 150 C700 120 745 90 795 70" />
+            <path class="twig-line" d="M650 150 C740 150 820 165 895 210" />
+            <path class="twig-line" d="M220 260 C150 300 100 345 60 400" />
+            <path class="twig-line" d="M220 260 C210 335 210 390 185 455" />
+            <path class="twig-line" d="M220 260 C300 315 345 360 380 420" />
+            <path class="twig-line" d="M780 260 C700 315 655 360 620 420" />
+            <path class="twig-line" d="M780 260 C790 335 790 390 815 455" />
+            <path class="twig-line" d="M780 260 C850 300 900 345 940 400" />
+            <ellipse class="canopy-leaf" cx="195" cy="142" rx="74" ry="30" transform="rotate(-18 195 142)" />
+            <ellipse class="canopy-leaf" cx="345" cy="90" rx="86" ry="34" transform="rotate(5 345 90)" />
+            <ellipse class="canopy-leaf" cx="500" cy="70" rx="96" ry="36" />
+            <ellipse class="canopy-leaf" cx="655" cy="90" rx="86" ry="34" transform="rotate(-5 655 90)" />
+            <ellipse class="canopy-leaf" cx="805" cy="142" rx="74" ry="30" transform="rotate(18 805 142)" />
+            <ellipse class="canopy-leaf" cx="120" cy="330" rx="84" ry="32" transform="rotate(-12 120 330)" />
+            <ellipse class="canopy-leaf" cx="300" cy="365" rx="92" ry="34" transform="rotate(8 300 365)" />
+            <ellipse class="canopy-leaf" cx="700" cy="365" rx="92" ry="34" transform="rotate(-8 700 365)" />
+            <ellipse class="canopy-leaf" cx="880" cy="330" rx="84" ry="32" transform="rotate(12 880 330)" />
           </svg>
+
+          <div id="nodeLayer" class="node-layer"></div>
+
           <div class="ground ground-back" aria-hidden="true"></div>
           <div class="ground ground-front" aria-hidden="true"></div>
-          <div class="tree-note">Faces and names only on the canopy. Click to open the insight layer.</div>
 
           <div id="emptyState" class="empty-state">
             <h3>No scientists found</h3>
-            <p>Try a wider filter or clear the search.</p>
+            <p>Try a wider filter or reset the tree.</p>
           </div>
 
           <article id="detailLayer" class="detail-layer hidden" aria-live="polite">
             <button id="closeLayer" class="close-layer" type="button" aria-label="Close details">×</button>
+
             <div class="layer-head">
-              <div class="layer-title-wrap">
-                <div class="detail-portrait-wrap"><img id="detailPortrait" alt="" /></div>
+              <div class="person-head">
+                <img id="detailPortrait" alt="" />
                 <div>
                   <p class="eyebrow small">Scientist insight layer</p>
-                  <h3 id="detailName">Scientist name</h3>
+                  <h2 id="detailName">Scientist name</h2>
                   <p id="detailMeta" class="meta-line"></p>
                 </div>
               </div>
@@ -87,44 +106,53 @@
             </div>
 
             <div class="detail-grid">
-              <div class="detail-story">
-                <section class="story-step branch-step"><span class="step-icon">🌿</span><div><h4>Breakthrough moment</h4><p id="detailBreakthrough"></p></div></section>
-                <section class="story-step leaf-step"><span class="step-icon">🍃</span><div><h4>Discovery</h4><p id="detailDiscovery"></p></div></section>
-                <section class="story-step thorn-step"><span class="step-icon">🪡</span><div><h4>Struggle</h4><p id="detailStruggle"></p></div></section>
-                <section class="story-step seed-step"><span class="step-icon">🌱</span><div><h4>Impact</h4><p id="detailImpact"></p></div></section>
+              <section class="story-column">
+                <div class="story-step branch-step"><b>🌿 Breakthrough</b><p id="detailBreakthrough"></p></div>
+                <div class="story-step leaf-step"><b>🍃 Discovery</b><p id="detailDiscovery"></p></div>
+                <div class="story-step thorn-step"><b>🪡 Struggle</b><p id="detailStruggle"></p></div>
+                <div class="story-step seed-step"><b>🌱 Impact</b><p id="detailImpact"></p></div>
                 <blockquote id="detailQuote" class="quote-card"></blockquote>
                 <a id="detailSource" class="source-link" href="#" target="_blank" rel="noreferrer">Open source</a>
-              </div>
+              </section>
 
-              <div class="detail-analysis">
+              <section class="analysis-column">
                 <div class="metric-grid">
-                  <article class="metric-card"><span class="metric-label">Breakthrough year</span><strong id="metricBreakthroughYear">—</strong></article>
-                  <article class="metric-card"><span class="metric-label">Field peers</span><strong id="metricFieldPeers">—</strong></article>
-                  <article class="metric-card"><span class="metric-label">Region peers</span><strong id="metricRegionPeers">—</strong></article>
-                  <article class="metric-card"><span class="metric-label">Era rank</span><strong id="metricEraRank">—</strong></article>
+                  <article class="metric-card"><span>Breakthrough year</span><strong id="metricBreakthroughYear">—</strong></article>
+                  <article class="metric-card"><span>Field peers</span><strong id="metricFieldPeers">—</strong></article>
+                  <article class="metric-card"><span>Region peers</span><strong id="metricRegionPeers">—</strong></article>
+                  <article class="metric-card"><span>Era rank</span><strong id="metricEraRank">—</strong></article>
                 </div>
                 <article class="chart-card">
-                  <div class="chart-head"><h4>Timeline position</h4><p>All scientists by breakthrough year</p></div>
+                  <h3>Timeline position</h3>
                   <div id="timelineChart" class="timeline-chart"></div>
                 </article>
-                <article class="chart-card compact"><div class="chart-head"><h4>Field distribution</h4></div><div id="fieldChart" class="bar-chart"></div></article>
-                <article class="chart-card compact"><div class="chart-head"><h4>Regional distribution</h4></div><div id="regionChart" class="bar-chart"></div></article>
-              </div>
+                <article class="chart-card">
+                  <h3>Field distribution</h3>
+                  <div id="fieldChart" class="bar-chart"></div>
+                </article>
+                <article class="chart-card">
+                  <h3>Regional distribution</h3>
+                  <div id="regionChart" class="bar-chart"></div>
+                </article>
+              </section>
             </div>
           </article>
         </div>
       </section>
 
-      <aside class="sidebar-card">
-        <div class="sidebar-head">
-          <p class="eyebrow small">Controls</p>
-          <p id="visibleCount" class="count-pill">0 visible</p>
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <div>
+            <p class="eyebrow small">Controls</p>
+            <h2>Filter the tree</h2>
+          </div>
+          <p id="visibleCount" class="count-pill">20 visible</p>
         </div>
 
         <div class="control-group">
           <label>
             <span>Search</span>
-            <input id="searchInput" type="search" placeholder="DNA, space, malaria, CRISPR…" />
+            <input id="searchInput" type="search" placeholder="DNA, space, malaria…" />
           </label>
           <label>
             <span>Field</span>
@@ -141,17 +169,14 @@
           <button id="resetFilters" type="button">Reset tree</button>
         </div>
 
-        <section class="sidebar-note">
-          <h3>Layout logic</h3>
-          <ul>
-            <li>The tree gets the largest frame, so the canopy stays visible.</li>
-            <li>Filters move to the right to stop the main stage being compressed vertically.</li>
-            <li>Names are broken into tidy two-line badges and positioned by row to prevent overlap.</li>
-          </ul>
-        </section>
+        <div class="sidebar-note">
+          <h3>Why this version should show</h3>
+          <p>This build does not draw the faces inside SVG. It uses normal HTML image nodes over a visible tree, which is more reliable on GitHub Pages.</p>
+        </div>
       </aside>
     </section>
   </main>
+
   <script src="./app.js"></script>
 </body>
 </html>
