@@ -44,12 +44,13 @@ let scientists = [];
 let selectedId = null;
 let hasOpenedDetail = false;
 
+// More even canopy placement, with top-left space reserved for the small title card.
 const slots = [
-  { x: 50, y: 15 }, { x: 37, y: 18 }, { x: 63, y: 18 },
-  { x: 22, y: 27 }, { x: 43, y: 28 }, { x: 57, y: 28 }, { x: 78, y: 27 },
-  { x: 11, y: 42 }, { x: 29, y: 42 }, { x: 42, y: 44 }, { x: 58, y: 44 }, { x: 71, y: 42 }, { x: 89, y: 42 },
-  { x: 20, y: 60 }, { x: 35, y: 61 }, { x: 50, y: 64 }, { x: 65, y: 61 }, { x: 80, y: 60 },
-  { x: 38, y: 78 }, { x: 62, y: 78 }
+  { x: 43, y: 10 }, { x: 57, y: 10 }, { x: 72, y: 12 }, { x: 86, y: 16 },
+  { x: 31, y: 20 }, { x: 45, y: 22 }, { x: 59, y: 22 }, { x: 73, y: 23 }, { x: 89, y: 30 },
+  { x: 13, y: 42 }, { x: 27, y: 39 }, { x: 41, y: 42 }, { x: 59, y: 42 }, { x: 73, y: 39 }, { x: 87, y: 42 },
+  { x: 23, y: 61 }, { x: 38, y: 61 }, { x: 62, y: 61 }, { x: 77, y: 61 },
+  { x: 50, y: 78 }
 ];
 
 function unique(values) {

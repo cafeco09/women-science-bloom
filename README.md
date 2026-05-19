@@ -1,17 +1,17 @@
 # The Women Who Made Science Bloom
 
-Fullscreen right-sidebar version.
+Clean tree version.
 
 ## What this fixes
 
-The earlier layout made the title area too large, which compressed the tree into the bottom of the frame. This version removes the large header from document flow and places the title as a small overlay card inside the tree.
+The previous version still had too much interface placed over the canopy. This build removes the large legend from the tree, keeps the title small, and moves the legend into the sidebar.
 
-- Tree uses the full left frame.
-- Filter stays fixed on the right.
-- Title is compact and does not push the tree down.
-- Details stay hidden until a scientist is clicked.
-- No desktop scroll.
-- Layout only stacks below 640px width.
+- Tree gets the full left frame.
+- Filters stay on the right.
+- Legend is in the right sidebar, not over the tree.
+- Title is compact and no longer blocks the canopy.
+- Detail layer is hidden until a scientist is clicked.
+- Nodes use a calmer, more even layout.
 
 ## Run locally
 

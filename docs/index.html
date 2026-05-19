@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Fullscreen no-scroll interactive tree of women scientists with right sidebar filters." />
+  <meta name="description" content="Clean one-page interactive tree of women scientists with visible portraits, right sidebar filters, moving quotes and in-tree detail layer." />
   <title>The Women Who Made Science Bloom</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -14,19 +14,10 @@
     </section>
 
     <section class="dashboard">
-      <section class="tree-area" aria-label="Interactive tree">
-        <div class="title-card">
+      <section class="tree-area" aria-label="Interactive women scientists tree">
+        <div class="tree-title">
           <p class="eyebrow">Interactive Knowledge Tree</p>
-          <h1>The Women Who Made Science Bloom</h1>
-          <p>Click a face to open her breakthrough, discovery, struggle and impact.</p>
-        </div>
-
-        <div class="legend-card" aria-label="Legend">
-          <span><b>Face</b> scientist</span>
-          <span><b>Branch</b> breakthrough</span>
-          <span><b>Leaf</b> discovery</span>
-          <span><b>Thorn</b> struggle</span>
-          <span><b>Seed</b> impact</span>
+          <h1>Women Who Made Science Bloom</h1>
         </div>
 
         <div class="sky-glow glow-one" aria-hidden="true"></div>
@@ -46,36 +37,37 @@
             </linearGradient>
           </defs>
 
-          <path class="main-trunk" d="M500 704 C485 612 523 510 500 395" />
-          <path class="main-branch" d="M500 500 C395 455 335 365 220 260" />
-          <path class="main-branch" d="M500 500 C605 455 665 365 780 260" />
-          <path class="main-branch" d="M500 425 C430 340 420 250 350 150" />
-          <path class="main-branch" d="M500 425 C570 340 580 250 650 150" />
-          <path class="main-branch" d="M500 392 C500 295 500 205 500 95" />
+          <path class="main-trunk" d="M500 716 C486 610 520 505 500 382" />
+          <path class="main-branch" d="M500 505 C405 445 330 355 215 250" />
+          <path class="main-branch" d="M500 505 C595 445 670 355 785 250" />
+          <path class="main-branch" d="M500 420 C425 330 405 230 330 105" />
+          <path class="main-branch" d="M500 420 C575 330 595 230 670 105" />
+          <path class="main-branch" d="M500 382 C500 285 500 185 500 70" />
 
-          <path class="twig-line" d="M350 150 C260 150 180 165 105 210" />
-          <path class="twig-line" d="M350 150 C300 120 255 90 205 70" />
-          <path class="twig-line" d="M500 95 C420 75 350 65 285 70" />
-          <path class="twig-line" d="M500 95 C580 75 650 65 715 70" />
-          <path class="twig-line" d="M650 150 C700 120 745 90 795 70" />
-          <path class="twig-line" d="M650 150 C740 150 820 165 895 210" />
-          <path class="twig-line" d="M220 260 C150 300 100 345 60 400" />
-          <path class="twig-line" d="M220 260 C210 335 210 390 185 455" />
-          <path class="twig-line" d="M220 260 C300 315 345 360 380 420" />
-          <path class="twig-line" d="M780 260 C700 315 655 360 620 420" />
-          <path class="twig-line" d="M780 260 C790 335 790 390 815 455" />
-          <path class="twig-line" d="M780 260 C850 300 900 345 940 400" />
+          <path class="twig-line" d="M330 105 C260 95 195 108 130 145" />
+          <path class="twig-line" d="M330 105 C300 80 268 60 220 52" />
+          <path class="twig-line" d="M500 70 C430 48 365 48 305 62" />
+          <path class="twig-line" d="M500 70 C570 48 635 48 695 62" />
+          <path class="twig-line" d="M670 105 C700 80 732 60 780 52" />
+          <path class="twig-line" d="M670 105 C740 95 805 108 870 145" />
 
-          <ellipse class="canopy-leaf" cx="195" cy="142" rx="74" ry="30" transform="rotate(-18 195 142)" />
-          <ellipse class="canopy-leaf" cx="345" cy="90" rx="86" ry="34" transform="rotate(5 345 90)" />
-          <ellipse class="canopy-leaf" cx="500" cy="70" rx="96" ry="36" />
-          <ellipse class="canopy-leaf" cx="655" cy="90" rx="86" ry="34" transform="rotate(-5 655 90)" />
-          <ellipse class="canopy-leaf" cx="805" cy="142" rx="74" ry="30" transform="rotate(18 805 142)" />
-          <ellipse class="canopy-leaf" cx="120" cy="330" rx="84" ry="32" transform="rotate(-12 120 330)" />
-          <ellipse class="canopy-leaf" cx="300" cy="365" rx="92" ry="34" transform="rotate(8 300 365)" />
-          <ellipse class="canopy-leaf" cx="500" cy="380" rx="80" ry="30" transform="rotate(0 500 380)" />
-          <ellipse class="canopy-leaf" cx="700" cy="365" rx="92" ry="34" transform="rotate(-8 700 365)" />
-          <ellipse class="canopy-leaf" cx="880" cy="330" rx="84" ry="32" transform="rotate(12 880 330)" />
+          <path class="twig-line" d="M215 250 C145 285 95 325 60 385" />
+          <path class="twig-line" d="M215 250 C205 320 190 382 155 450" />
+          <path class="twig-line" d="M215 250 C295 292 355 350 405 430" />
+          <path class="twig-line" d="M785 250 C705 292 645 350 595 430" />
+          <path class="twig-line" d="M785 250 C795 320 810 382 845 450" />
+          <path class="twig-line" d="M785 250 C855 285 905 325 940 385" />
+
+          <ellipse class="canopy-leaf" cx="155" cy="128" rx="82" ry="34" transform="rotate(-12 155 128)" />
+          <ellipse class="canopy-leaf" cx="315" cy="78" rx="94" ry="36" transform="rotate(4 315 78)" />
+          <ellipse class="canopy-leaf" cx="500" cy="58" rx="106" ry="38" />
+          <ellipse class="canopy-leaf" cx="685" cy="78" rx="94" ry="36" transform="rotate(-4 685 78)" />
+          <ellipse class="canopy-leaf" cx="845" cy="128" rx="82" ry="34" transform="rotate(12 845 128)" />
+          <ellipse class="canopy-leaf" cx="110" cy="330" rx="92" ry="34" transform="rotate(-10 110 330)" />
+          <ellipse class="canopy-leaf" cx="310" cy="365" rx="104" ry="38" transform="rotate(7 310 365)" />
+          <ellipse class="canopy-leaf" cx="500" cy="405" rx="96" ry="34" />
+          <ellipse class="canopy-leaf" cx="690" cy="365" rx="104" ry="38" transform="rotate(-7 690 365)" />
+          <ellipse class="canopy-leaf" cx="890" cy="330" rx="92" ry="34" transform="rotate(10 890 330)" />
         </svg>
 
         <div id="nodeLayer" class="node-layer"></div>
@@ -95,7 +87,7 @@
             <div class="person-head">
               <img id="detailPortrait" alt="" />
               <div>
-                <p class="eyebrow small">Scientist insight layer</p>
+                <p class="eyebrow small">Scientist insight</p>
                 <h2 id="detailName">Scientist name</h2>
                 <p id="detailMeta" class="meta-line"></p>
               </div>
@@ -170,9 +162,13 @@
           <button id="resetFilters" type="button">Reset</button>
         </div>
 
-        <div class="sidebar-note">
-          <h3>One-page rule</h3>
-          <p>The right panel is fixed. The tree uses the full remaining frame, so it is visible immediately.</p>
+        <div class="legend-side">
+          <h3>Legend</h3>
+          <div><b>Face</b><span>scientist</span></div>
+          <div><b>Branch</b><span>breakthrough</span></div>
+          <div><b>Leaf</b><span>discovery</span></div>
+          <div><b>Thorn</b><span>struggle</span></div>
+          <div><b>Seed</b><span>impact</span></div>
         </div>
       </aside>
     </section>
