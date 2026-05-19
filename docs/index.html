@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Clean one-page interactive tree of women scientists with visible portraits, right sidebar filters, moving quotes and in-tree detail layer." />
+  <meta name="description" content="A clean no-scroll interactive tree of women scientists with non-overlapping portraits, right sidebar controls and in-tree detail layer." />
   <title>The Women Who Made Science Bloom</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -15,11 +15,6 @@
 
     <section class="dashboard">
       <section class="tree-area" aria-label="Interactive women scientists tree">
-        <div class="tree-title">
-          <p class="eyebrow">Interactive Knowledge Tree</p>
-          <h1>Women Who Made Science Bloom</h1>
-        </div>
-
         <div class="sky-glow glow-one" aria-hidden="true"></div>
         <div class="sky-glow glow-two" aria-hidden="true"></div>
         <div id="pollenLayer" class="pollen-layer" aria-hidden="true"></div>
@@ -37,37 +32,38 @@
             </linearGradient>
           </defs>
 
-          <path class="main-trunk" d="M500 716 C486 610 520 505 500 382" />
-          <path class="main-branch" d="M500 505 C405 445 330 355 215 250" />
-          <path class="main-branch" d="M500 505 C595 445 670 355 785 250" />
-          <path class="main-branch" d="M500 420 C425 330 405 230 330 105" />
-          <path class="main-branch" d="M500 420 C575 330 595 230 670 105" />
-          <path class="main-branch" d="M500 382 C500 285 500 185 500 70" />
+          <path class="main-trunk" d="M500 718 C485 610 520 500 500 382" />
+          <path class="main-branch" d="M500 502 C410 450 330 360 190 245" />
+          <path class="main-branch" d="M500 502 C590 450 670 360 810 245" />
+          <path class="main-branch" d="M500 425 C415 320 380 215 260 95" />
+          <path class="main-branch" d="M500 425 C585 320 620 215 740 95" />
+          <path class="main-branch" d="M500 380 C500 275 500 170 500 55" />
 
-          <path class="twig-line" d="M330 105 C260 95 195 108 130 145" />
-          <path class="twig-line" d="M330 105 C300 80 268 60 220 52" />
-          <path class="twig-line" d="M500 70 C430 48 365 48 305 62" />
-          <path class="twig-line" d="M500 70 C570 48 635 48 695 62" />
-          <path class="twig-line" d="M670 105 C700 80 732 60 780 52" />
-          <path class="twig-line" d="M670 105 C740 95 805 108 870 145" />
+          <path class="twig-line" d="M260 95 C205 100 155 118 115 145" />
+          <path class="twig-line" d="M260 95 C325 78 385 65 445 58" />
+          <path class="twig-line" d="M500 55 C560 65 620 78 685 95" />
+          <path class="twig-line" d="M740 95 C795 100 845 118 885 145" />
 
-          <path class="twig-line" d="M215 250 C145 285 95 325 60 385" />
-          <path class="twig-line" d="M215 250 C205 320 190 382 155 450" />
-          <path class="twig-line" d="M215 250 C295 292 355 350 405 430" />
-          <path class="twig-line" d="M785 250 C705 292 645 350 595 430" />
-          <path class="twig-line" d="M785 250 C795 320 810 382 845 450" />
-          <path class="twig-line" d="M785 250 C855 285 905 325 940 385" />
+          <path class="twig-line" d="M190 245 C145 280 105 320 75 365" />
+          <path class="twig-line" d="M190 245 C250 288 310 330 370 390" />
+          <path class="twig-line" d="M810 245 C750 288 690 330 630 390" />
+          <path class="twig-line" d="M810 245 C855 280 895 320 925 365" />
 
-          <ellipse class="canopy-leaf" cx="155" cy="128" rx="82" ry="34" transform="rotate(-12 155 128)" />
-          <ellipse class="canopy-leaf" cx="315" cy="78" rx="94" ry="36" transform="rotate(4 315 78)" />
-          <ellipse class="canopy-leaf" cx="500" cy="58" rx="106" ry="38" />
-          <ellipse class="canopy-leaf" cx="685" cy="78" rx="94" ry="36" transform="rotate(-4 685 78)" />
-          <ellipse class="canopy-leaf" cx="845" cy="128" rx="82" ry="34" transform="rotate(12 845 128)" />
-          <ellipse class="canopy-leaf" cx="110" cy="330" rx="92" ry="34" transform="rotate(-10 110 330)" />
-          <ellipse class="canopy-leaf" cx="310" cy="365" rx="104" ry="38" transform="rotate(7 310 365)" />
-          <ellipse class="canopy-leaf" cx="500" cy="405" rx="96" ry="34" />
-          <ellipse class="canopy-leaf" cx="690" cy="365" rx="104" ry="38" transform="rotate(-7 690 365)" />
-          <ellipse class="canopy-leaf" cx="890" cy="330" rx="92" ry="34" transform="rotate(10 890 330)" />
+          <path class="twig-line" d="M370 390 C300 470 250 540 205 625" />
+          <path class="twig-line" d="M370 390 C430 490 465 565 500 675" />
+          <path class="twig-line" d="M630 390 C570 490 535 565 500 675" />
+          <path class="twig-line" d="M630 390 C700 470 750 540 795 625" />
+
+          <ellipse class="canopy-leaf" cx="140" cy="135" rx="92" ry="35" transform="rotate(-10 140 135)" />
+          <ellipse class="canopy-leaf" cx="315" cy="86" rx="110" ry="38" transform="rotate(4 315 86)" />
+          <ellipse class="canopy-leaf" cx="500" cy="68" rx="116" ry="40" />
+          <ellipse class="canopy-leaf" cx="685" cy="86" rx="110" ry="38" transform="rotate(-4 685 86)" />
+          <ellipse class="canopy-leaf" cx="860" cy="135" rx="92" ry="35" transform="rotate(10 860 135)" />
+          <ellipse class="canopy-leaf" cx="110" cy="330" rx="102" ry="36" transform="rotate(-9 110 330)" />
+          <ellipse class="canopy-leaf" cx="310" cy="360" rx="112" ry="40" transform="rotate(6 310 360)" />
+          <ellipse class="canopy-leaf" cx="500" cy="405" rx="106" ry="36" />
+          <ellipse class="canopy-leaf" cx="690" cy="360" rx="112" ry="40" transform="rotate(-6 690 360)" />
+          <ellipse class="canopy-leaf" cx="890" cy="330" rx="102" ry="36" transform="rotate(9 890 330)" />
         </svg>
 
         <div id="nodeLayer" class="node-layer"></div>
@@ -134,6 +130,12 @@
       </section>
 
       <aside class="sidebar">
+        <div class="brand-card">
+          <p class="eyebrow small">Interactive Knowledge Tree</p>
+          <h1>Women Who Made Science Bloom</h1>
+          <p>Faces and names are arranged in a fixed canopy grid to avoid overlap.</p>
+        </div>
+
         <div class="sidebar-top">
           <div>
             <p class="eyebrow small">Controls</p>
@@ -163,7 +165,7 @@
         </div>
 
         <div class="legend-side">
-          <h3>Legend</h3>
+          <h3>Read the tree</h3>
           <div><b>Face</b><span>scientist</span></div>
           <div><b>Branch</b><span>breakthrough</span></div>
           <div><b>Leaf</b><span>discovery</span></div>

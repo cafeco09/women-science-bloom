@@ -44,13 +44,12 @@ let scientists = [];
 let selectedId = null;
 let hasOpenedDetail = false;
 
-// More even canopy placement, with top-left space reserved for the small title card.
+// Fixed 5 x 4 canopy grid. This is deliberate: it prevents label overlap.
 const slots = [
-  { x: 43, y: 10 }, { x: 57, y: 10 }, { x: 72, y: 12 }, { x: 86, y: 16 },
-  { x: 31, y: 20 }, { x: 45, y: 22 }, { x: 59, y: 22 }, { x: 73, y: 23 }, { x: 89, y: 30 },
-  { x: 13, y: 42 }, { x: 27, y: 39 }, { x: 41, y: 42 }, { x: 59, y: 42 }, { x: 73, y: 39 }, { x: 87, y: 42 },
-  { x: 23, y: 61 }, { x: 38, y: 61 }, { x: 62, y: 61 }, { x: 77, y: 61 },
-  { x: 50, y: 78 }
+  { x: 12, y: 14 }, { x: 31, y: 12 }, { x: 50, y: 11 }, { x: 69, y: 12 }, { x: 88, y: 14 },
+  { x: 12, y: 31 }, { x: 31, y: 30 }, { x: 50, y: 29 }, { x: 69, y: 30 }, { x: 88, y: 31 },
+  { x: 12, y: 48 }, { x: 31, y: 48 }, { x: 50, y: 48 }, { x: 69, y: 48 }, { x: 88, y: 48 },
+  { x: 20, y: 66 }, { x: 40, y: 66 }, { x: 60, y: 66 }, { x: 80, y: 66 }, { x: 50, y: 82 }
 ];
 
 function unique(values) {
@@ -91,7 +90,7 @@ function buildQuotes() {
 function buildPollen() {
   pollenLayer.innerHTML = "";
 
-  for (let i = 0; i < 20; i += 1) {
+  for (let i = 0; i < 18; i += 1) {
     const pollen = document.createElement("span");
     pollen.className = "pollen";
     pollen.style.left = `${Math.random() * 100}%`;

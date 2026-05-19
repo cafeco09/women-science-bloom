@@ -1,17 +1,18 @@
 # The Women Who Made Science Bloom
 
-Clean tree version.
+Final clean-grid tree version.
 
 ## What this fixes
 
-The previous version still had too much interface placed over the canopy. This build removes the large legend from the tree, keeps the title small, and moves the legend into the sidebar.
+The earlier versions put too many interface elements over the tree and let portrait labels collide. This version uses a fixed 5×4 canopy grid so names do not overlap.
 
-- Tree gets the full left frame.
-- Filters stay on the right.
-- Legend is in the right sidebar, not over the tree.
-- Title is compact and no longer blocks the canopy.
-- Detail layer is hidden until a scientist is clicked.
-- Nodes use a calmer, more even layout.
+- No title card over the tree.
+- No legend cards over the tree.
+- Title, controls and legend sit in the right sidebar.
+- Faces and names use fixed canopy positions.
+- Detail layer opens only after clicking a scientist.
+- No desktop scroll.
+- Moving quotes remain at the top.
 
 ## Run locally
 
