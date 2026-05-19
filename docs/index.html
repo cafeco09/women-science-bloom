@@ -3,36 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A living interactive tree of women scientists with real portrait nodes, always-on thought bubbles and a bottom analysis drawer." />
+  <meta name="description" content="A one-page interactive tree of women scientists with portraits, structured labels, moving quotes and an in-tree detail layer." />
   <title>The Women Who Made Science Bloom</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <div class="ambient ambient-a" aria-hidden="true"></div>
-  <div class="ambient ambient-b" aria-hidden="true"></div>
+  <main class="app-shell">
+    <section class="quote-ribbon" aria-label="Moving scientist quotes">
+      <div class="quote-track" id="quoteTrack"></div>
+    </section>
 
-  <main class="page-shell">
-    <header class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">Living science tree</p>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Interactive knowledge tree</p>
         <h1>The Women Who Made Science Bloom</h1>
-        <p class="hero-text">
-          Real portrait nodes replace the flower icons. Thought bubbles stay visible at all times, so names are readable without hover.
-          Tap or click any scientist to open the analysis drawer with their story, timeline position and comparative charts.
-        </p>
+        <p class="subtitle">Faces and names live directly on the tree. Tap a scientist to open a detail layer without leaving the page.</p>
       </div>
-
-      <section class="legend-card" aria-label="How to read the tree">
-        <h2>How to read the tree</h2>
-        <div class="legend-grid">
-          <span><b>👩‍🔬 Portrait</b> scientist</span>
-          <span><b>💭 Thought bubble</b> name</span>
-          <span><b>🌿 Branch</b> breakthrough</span>
-          <span><b>🍃 Leaf</b> discovery</span>
-          <span><b>🪡 Thorn</b> struggle</span>
-          <span><b>🌱 Seed</b> impact</span>
-        </div>
-      </section>
+      <div class="compact-legend">
+        <span><b>Portrait</b> scientist</span>
+        <span><b>Branch</b> breakthrough</span>
+        <span><b>Leaf</b> discovery</span>
+        <span><b>Thorn</b> struggle</span>
+        <span><b>Seed</b> impact</span>
+      </div>
     </header>
 
     <section class="control-bar" aria-label="Search and filters">
@@ -40,181 +33,117 @@
         <span>Search</span>
         <input id="searchInput" type="search" placeholder="DNA, space, malaria, CRISPR…" />
       </label>
-
       <label>
         <span>Field</span>
         <select id="fieldFilter"><option value="all">All fields</option></select>
       </label>
-
       <label>
         <span>Region</span>
         <select id="regionFilter"><option value="all">All regions</option></select>
       </label>
-
       <label>
         <span>Century</span>
         <select id="centuryFilter"><option value="all">All centuries</option></select>
       </label>
-
       <button id="resetFilters" type="button">Reset tree</button>
     </section>
 
-    <section class="tree-shell">
-      <div class="tree-panel">
-        <div class="panel-heading">
-          <div>
-            <p class="eyebrow small">Tree view</p>
-            <h2>Names stay visible. Tap for analysis.</h2>
-          </div>
-          <p id="visibleCount" class="count-pill">0 visible</p>
+    <section class="tree-card">
+      <div class="stage-top">
+        <div>
+          <p class="eyebrow small">Structured tree view</p>
+          <h2>One page · no overlap · in-tree details</h2>
         </div>
-
-        <div class="tree-stage">
-          <div class="sky-glow glow-one" aria-hidden="true"></div>
-          <div class="sky-glow glow-two" aria-hidden="true"></div>
-          <div id="pollenLayer" class="pollen-layer" aria-hidden="true"></div>
-          <div id="petalLayer" class="petal-layer" aria-hidden="true"></div>
-
-          <svg id="treeSvg" role="img" aria-label="Interactive tree of women scientists">
-            <defs>
-              <linearGradient id="trunkGradient" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#6b432b"/>
-                <stop offset="50%" stop-color="#8b5a3c"/>
-                <stop offset="100%" stop-color="#5a3322"/>
-              </linearGradient>
-
-              <linearGradient id="branchGradient" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#8e5d3c"/>
-                <stop offset="100%" stop-color="#65422d"/>
-              </linearGradient>
-
-              <linearGradient id="leafGradient" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#9fd486"/>
-                <stop offset="100%" stop-color="#427242"/>
-              </linearGradient>
-
-              <linearGradient id="portraitFrame" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#fff8fb"/>
-                <stop offset="100%" stop-color="#f5c7d5"/>
-              </linearGradient>
-            </defs>
-          </svg>
-
-          <div class="ground ground-back" aria-hidden="true"></div>
-          <div class="ground ground-front" aria-hidden="true"></div>
-          <div class="tree-note">Portraits use real faces. Thought bubbles are persistent, so touch devices do not rely on hover.</div>
-
-          <div id="emptyState" class="empty-state">
-            <h3>No portraits found</h3>
-            <p>Try a wider filter or clear the search.</p>
-          </div>
-        </div>
+        <p id="visibleCount" class="count-pill">0 visible</p>
       </div>
 
-      <section id="analysisDrawer" class="analysis-drawer open" aria-live="polite">
-        <div class="drawer-head">
-          <div>
-            <p class="eyebrow small">Analysis drawer</p>
-            <h2 id="detailName">Loading…</h2>
-            <p id="detailMeta" class="meta-line"></p>
-          </div>
-          <div class="drawer-pills">
-            <span id="detailField" class="field-pill">Field</span>
-            <span id="detailOrigin" class="origin-pill">Origin</span>
-            <span id="detailYear" class="year-pill">Year</span>
-          </div>
+      <div class="tree-stage" id="treeStage">
+        <div class="sky-glow glow-one" aria-hidden="true"></div>
+        <div class="sky-glow glow-two" aria-hidden="true"></div>
+        <div id="pollenLayer" class="pollen-layer" aria-hidden="true"></div>
+        <svg id="treeSvg" role="img" aria-label="Interactive tree of women scientists">
+          <defs>
+            <linearGradient id="trunkGradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#6b432b"/>
+              <stop offset="50%" stop-color="#8b5a3c"/>
+              <stop offset="100%" stop-color="#5a3322"/>
+            </linearGradient>
+            <linearGradient id="branchGradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#8e5d3c"/>
+              <stop offset="100%" stop-color="#65422d"/>
+            </linearGradient>
+            <linearGradient id="leafGradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#9fd486"/>
+              <stop offset="100%" stop-color="#427242"/>
+            </linearGradient>
+            <linearGradient id="portraitFrame" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#fff8fb"/>
+              <stop offset="100%" stop-color="#f5c7d5"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="ground ground-back" aria-hidden="true"></div>
+        <div class="ground ground-front" aria-hidden="true"></div>
+        <div class="tree-note">Click a portrait to open details as a floating layer inside the tree.</div>
+
+        <div id="emptyState" class="empty-state">
+          <h3>No scientists found</h3>
+          <p>Try a wider filter or clear the search.</p>
         </div>
 
-        <div class="metric-grid">
-          <article class="metric-card">
-            <span class="metric-label">Breakthrough year</span>
-            <strong id="metricBreakthroughYear">—</strong>
-            <small>Position in the full 20-scientist timeline</small>
-          </article>
-          <article class="metric-card">
-            <span class="metric-label">Field peers</span>
-            <strong id="metricFieldPeers">—</strong>
-            <small>Scientists in the same field family</small>
-          </article>
-          <article class="metric-card">
-            <span class="metric-label">Region peers</span>
-            <strong id="metricRegionPeers">—</strong>
-            <small>Scientists from the same region grouping</small>
-          </article>
-          <article class="metric-card">
-            <span class="metric-label">Era rank</span>
-            <strong id="metricEraRank">—</strong>
-            <small>Ordered by breakthrough year</small>
-          </article>
-        </div>
-
-        <div class="drawer-layout">
-          <div class="story-column">
-            <section class="story-step branch-step">
-              <div class="step-icon">🌿</div>
+        <article id="detailLayer" class="detail-layer hidden" aria-live="polite">
+          <button id="closeLayer" class="close-layer" type="button" aria-label="Close details">×</button>
+          <div class="layer-head">
+            <div class="layer-title-wrap">
+              <div class="detail-portrait-wrap"><img id="detailPortrait" alt="" /></div>
               <div>
-                <h3>Branch · breakthrough moment</h3>
-                <p id="detailBreakthrough"></p>
+                <p class="eyebrow small">Scientist detail layer</p>
+                <h3 id="detailName">Scientist name</h3>
+                <p id="detailMeta" class="meta-line"></p>
               </div>
-            </section>
-
-            <section class="story-step leaf-step">
-              <div class="step-icon">🍃</div>
-              <div>
-                <h3>Leaf · discovery</h3>
-                <p id="detailDiscovery"></p>
-              </div>
-            </section>
-
-            <section class="story-step thorn-step">
-              <div class="step-icon">🪡</div>
-              <div>
-                <h3>Thorn · struggle</h3>
-                <p id="detailStruggle"></p>
-              </div>
-            </section>
-
-            <section class="story-step seed-step">
-              <div class="step-icon">🌱</div>
-              <div>
-                <h3>Seed · lasting impact</h3>
-                <p id="detailImpact"></p>
-              </div>
-            </section>
-
-            <a id="detailSource" class="source-link" href="#" target="_blank" rel="noreferrer">Open source</a>
+            </div>
+            <div class="layer-pills">
+              <span id="detailField" class="field-pill"></span>
+              <span id="detailOrigin" class="origin-pill"></span>
+              <span id="detailYear" class="year-pill"></span>
+            </div>
           </div>
 
-          <div class="chart-column">
-            <article class="chart-card">
-              <div class="chart-head">
-                <h3>Timeline position</h3>
-                <p>All scientists by breakthrough year</p>
-              </div>
-              <div id="timelineChart" class="timeline-chart"></div>
-            </article>
+          <div class="detail-grid">
+            <div class="detail-story">
+              <section class="story-step branch-step"><span class="step-icon">🌿</span><div><h4>Breakthrough moment</h4><p id="detailBreakthrough"></p></div></section>
+              <section class="story-step leaf-step"><span class="step-icon">🍃</span><div><h4>Discovery</h4><p id="detailDiscovery"></p></div></section>
+              <section class="story-step thorn-step"><span class="step-icon">🪡</span><div><h4>Struggle</h4><p id="detailStruggle"></p></div></section>
+              <section class="story-step seed-step"><span class="step-icon">🌱</span><div><h4>Impact</h4><p id="detailImpact"></p></div></section>
+              <blockquote id="detailQuote" class="quote-card"></blockquote>
+              <a id="detailSource" class="source-link" href="#" target="_blank" rel="noreferrer">Open source</a>
+            </div>
 
-            <article class="chart-card">
-              <div class="chart-head">
-                <h3>Field distribution</h3>
-                <p>How represented is this scientist’s field?</p>
+            <div class="detail-analysis">
+              <div class="metric-grid">
+                <article class="metric-card"><span class="metric-label">Breakthrough year</span><strong id="metricBreakthroughYear">—</strong></article>
+                <article class="metric-card"><span class="metric-label">Field peers</span><strong id="metricFieldPeers">—</strong></article>
+                <article class="metric-card"><span class="metric-label">Region peers</span><strong id="metricRegionPeers">—</strong></article>
+                <article class="metric-card"><span class="metric-label">Era rank</span><strong id="metricEraRank">—</strong></article>
               </div>
-              <div id="fieldChart" class="bar-chart"></div>
-            </article>
-
-            <article class="chart-card">
-              <div class="chart-head">
-                <h3>Regional distribution</h3>
-                <p>How represented is this scientist’s region?</p>
-              </div>
-              <div id="regionChart" class="bar-chart"></div>
-            </article>
+              <article class="chart-card">
+                <div class="chart-head"><h4>Timeline position</h4><p>All scientists by breakthrough year</p></div>
+                <div id="timelineChart" class="timeline-chart"></div>
+              </article>
+              <article class="chart-card compact">
+                <div class="chart-head"><h4>Field distribution</h4></div>
+                <div id="fieldChart" class="bar-chart"></div>
+              </article>
+              <article class="chart-card compact">
+                <div class="chart-head"><h4>Regional distribution</h4></div>
+                <div id="regionChart" class="bar-chart"></div>
+              </article>
+            </div>
           </div>
-        </div>
-      </section>
+        </article>
+      </div>
     </section>
   </main>
-
   <script src="./app.js"></script>
 </body>
 </html>

@@ -16,7 +16,8 @@
     "sourceUrl": "https://www.nobelprize.org/prizes/chemistry/1911/marie-curie/facts/",
     "keywords": "radioactivity polonium radium pitchblende chemistry physics cancer radiation",
     "leafLabel": "Radium",
-    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_c._1920s.jpg/330px-Marie_Curie_c._1920s.jpg"
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_c._1920s.jpg/330px-Marie_Curie_c._1920s.jpg",
+    "quote": "Nothing in life is to be feared; it is only to be understood."
   },
   {
     "id": "rosalind-franklin",
@@ -35,7 +36,8 @@
     "sourceUrl": "https://www.ukri.org/blog/from-the-archive-rosalind-franklins-famous-photo-51/",
     "keywords": "dna x-ray diffraction photo 51 double helix genetics molecular biology",
     "leafLabel": "DNA",
-    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Rosalind_Franklin_%28retouched%29.jpg/330px-Rosalind_Franklin_%28retouched%29.jpg"
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Rosalind_Franklin_%28retouched%29.jpg/330px-Rosalind_Franklin_%28retouched%29.jpg",
+    "quote": "Science and everyday life cannot and should not be separated."
   },
   {
     "id": "katherine-johnson",
@@ -54,7 +56,8 @@
     "sourceUrl": "https://www.nasa.gov/centers-and-facilities/langley/katherine-johnson-biography/",
     "keywords": "nasa orbit trajectory alan shepard john glenn apollo mathematics space human computer",
     "leafLabel": "Orbit",
-    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Katherine_Johnson_1983.jpg/330px-Katherine_Johnson_1983.jpg"
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Katherine_Johnson_1983.jpg/330px-Katherine_Johnson_1983.jpg",
+    "quote": "Like what you do, and then you will do your best."
   },
   {
     "id": "chien-shiung-wu",
@@ -73,7 +76,8 @@
     "sourceUrl": "https://www.womenshistory.org/education-resources/biographies/chien-shiung-wu",
     "keywords": "parity beta decay cobalt nuclear physics weak interaction symmetry wu experiment",
     "leafLabel": "Parity",
-    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Chien-shiung_Wu_%281912-1997%29_C.jpg/330px-Chien-shiung_Wu_%281912-1997%29_C.jpg"
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Chien-shiung_Wu_%281912-1997%29_C.jpg/330px-Chien-shiung_Wu_%281912-1997%29_C.jpg",
+    "quote": "I wonder whether the tiny atoms and nuclei have any preference for either masculine or feminine treatment."
   },
   {
     "id": "tu-youyou",
@@ -92,7 +96,8 @@
     "sourceUrl": "https://www.nobelprize.org/prizes/medicine/2015/tu/facts/",
     "keywords": "malaria artemisinin sweet wormwood medicine public health parasites",
     "leafLabel": "Malaria",
-    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/D810_4987_Tu_Youyou%2C_medicine_%2822945001843%29_%28cropped%29.jpg/330px-D810_4987_Tu_Youyou%2C_medicine_%2822945001843%29_%28cropped%29.jpg"
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/D810_4987_Tu_Youyou%2C_medicine_%2822945001843%29_%28cropped%29.jpg/330px-D810_4987_Tu_Youyou%2C_medicine_%2822945001843%29_%28cropped%29.jpg",
+    "quote": "Every scientist dreams of doing something that can help the world."
   },
   {
     "id": "katalin-kariko",
@@ -111,7 +116,8 @@
     "sourceUrl": "https://www.nobelprize.org/prizes/medicine/2023/kariko/facts/",
     "keywords": "mrna vaccine covid nucleoside base modifications biochemistry immunology rna",
     "leafLabel": "mRNA",
-    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Katalin_Karik%C3%B3_by_Michel_2024_02.jpg/330px-Katalin_Karik%C3%B3_by_Michel_2024_02.jpg"
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Katalin_Karik%C3%B3_by_Michel_2024_02.jpg/330px-Katalin_Karik%C3%B3_by_Michel_2024_02.jpg",
+    "quote": "I did not give up, and good things came."
   },
   {
     "id": "donna-strickland",
@@ -130,7 +136,8 @@
     "sourceUrl": "https://www.nobelprize.org/prizes/physics/2018/strickland/facts/",
     "keywords": "laser chirped pulse amplification cpa physics optics eye surgery",
     "leafLabel": "Lasers",
-    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Donna_Strickland_EM1B5760_%2846183560632%29_%28cropped%29.jpg/330px-Donna_Strickland_EM1B5760_%2846183560632%29_%28cropped%29.jpg"
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Donna_Strickland_EM1B5760_%2846183560632%29_%28cropped%29.jpg/330px-Donna_Strickland_EM1B5760_%2846183560632%29_%28cropped%29.jpg",
+    "quote": "I’m not a woman scientist. I’m a scientist."
   },
   {
     "id": "jocelyn-bell-burnell",
@@ -149,7 +156,8 @@
     "sourceUrl": "https://royalsociety.org/people/jocelyn-bell-burnell-11066/",
     "keywords": "pulsars radio astronomy astrophysics neutron stars cambridge telescope",
     "leafLabel": "Pulsars",
-    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Launch_of_IYA_2009%2C_Paris_-_Grygar%2C_Bell_Burnell_cropped.jpg/330px-Launch_of_IYA_2009%2C_Paris_-_Grygar%2C_Bell_Burnell_cropped.jpg"
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Launch_of_IYA_2009%2C_Paris_-_Grygar%2C_Bell_Burnell_cropped.jpg/330px-Launch_of_IYA_2009%2C_Paris_-_Grygar%2C_Bell_Burnell_cropped.jpg",
+    "quote": "You have to learn that there’s no point in being upset by people who don’t recognise your work."
   },
   {
     "id": "gerty-cori",
@@ -168,7 +176,8 @@
     "sourceUrl": "https://www.nobelprize.org/prizes/medicine/1947/cori-gt/facts/",
     "keywords": "gerty cori cori cycle glycogen metabolism glucose lactic acid biochemistry",
     "leafLabel": "Glycogen",
-    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Gerty_Theresa_Cori.jpg/330px-Gerty_Theresa_Cori.jpg"
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Gerty_Theresa_Cori.jpg/330px-Gerty_Theresa_Cori.jpg",
+    "quote": "I believed in my work, and I believed I was right."
   },
   {
     "id": "barbara-mcclintock",
@@ -187,7 +196,8 @@
     "sourceUrl": "https://www.nobelprize.org/prizes/medicine/1983/mcclintock/facts/",
     "keywords": "barbara mcclintock jumping genes mobile genetic elements transposons maize genetics",
     "leafLabel": "Genes",
-    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Barbara_McClintock_%281902-1992%29_shown_in_her_laboratory_in_1947.jpg/330px-Barbara_McClintock_%281902-1992%29_shown_in_her_laboratory_in_1947.jpg"
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Barbara_McClintock_%281902-1992%29_shown_in_her_laboratory_in_1947.jpg/330px-Barbara_McClintock_%281902-1992%29_shown_in_her_laboratory_in_1947.jpg",
+    "quote": "If you know you are on the right track, if you have this inner knowledge, then nobody can turn you off."
   },
   {
     "id": "dorothy-hodgkin",
@@ -206,7 +216,8 @@
     "sourceUrl": "https://www.nobelprize.org/prizes/chemistry/1964/hodgkin/facts/",
     "keywords": "dorothy hodgkin x-ray crystallography penicillin vitamin b12 insulin chemistry",
     "leafLabel": "B12",
-    "portrait": "https://upload.wikimedia.org/wikipedia/en/3/3f/Dorothy_Hodgkin_Nobel.jpg"
+    "portrait": "https://upload.wikimedia.org/wikipedia/en/3/3f/Dorothy_Hodgkin_Nobel.jpg",
+    "quote": "I was captured for life by chemistry and by crystals."
   },
   {
     "id": "rita-levi-montalcini",
@@ -225,7 +236,8 @@
     "sourceUrl": "https://www.nobelprize.org/stories/women-who-changed-science/rita-levi-montalcini/",
     "keywords": "rita levi-montalcini nerve growth factor ngf neuroscience neurobiology fascist italy",
     "leafLabel": "NGF",
-    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Rita_Levi-Montalcini_%281986%29.png/330px-Rita_Levi-Montalcini_%281986%29.png"
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Rita_Levi-Montalcini_%281986%29.png/330px-Rita_Levi-Montalcini_%281986%29.png",
+    "quote": "Above all, don’t fear difficult moments. The best comes from them."
   },
   {
     "id": "ada-yonath",
@@ -244,7 +256,8 @@
     "sourceUrl": "https://www.nobelprize.org/prizes/chemistry/2009/yonath/facts/",
     "keywords": "ada yonath ribosome structure x-ray crystallography antibiotics structural biology",
     "leafLabel": "Ribosome",
-    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Ada_Yonath_2013_January_CHF.jpg/330px-Ada_Yonath_2013_January_CHF.jpg"
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Ada_Yonath_2013_January_CHF.jpg/330px-Ada_Yonath_2013_January_CHF.jpg",
+    "quote": "Curiosity is the best driving force."
   },
   {
     "id": "elizabeth-blackburn",
@@ -263,7 +276,8 @@
     "sourceUrl": "https://www.nobelprize.org/prizes/medicine/2009/press-release/Telomeres/",
     "keywords": "elizabeth blackburn telomeres telomerase chromosome ends ageing cancer molecular biology",
     "leafLabel": "Telomeres",
-    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Elizabeth_Blackburn_in_2024_by_Christopher_Michel.jpg/330px-Elizabeth_Blackburn_in_2024_by_Christopher_Michel.jpg"
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Elizabeth_Blackburn_in_2024_by_Christopher_Michel.jpg/330px-Elizabeth_Blackburn_in_2024_by_Christopher_Michel.jpg",
+    "quote": "Biology is not destiny."
   },
   {
     "id": "emmanuelle-charpentier",
@@ -282,7 +296,8 @@
     "sourceUrl": "https://www.nobelprize.org/prizes/chemistry/2020/charpentier/facts/",
     "keywords": "emmanuelle charpentier crispr cas9 genome editing genetics bacteria tracrRNA",
     "leafLabel": "CRISPR",
-    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Emmanuelle_Charpentier.jpg/330px-Emmanuelle_Charpentier.jpg"
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Emmanuelle_Charpentier.jpg/330px-Emmanuelle_Charpentier.jpg",
+    "quote": "Research is about daring."
   },
   {
     "id": "jennifer-doudna",
@@ -301,7 +316,8 @@
     "sourceUrl": "https://www.nobelprize.org/prizes/chemistry/2020/doudna/facts/",
     "keywords": "jennifer doudna crispr cas9 genome editing rna molecular biology genetics",
     "leafLabel": "Gene editing",
-    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Jennifer_Doudna_by_Christopher_Michel_in_2023_01.jpg/330px-Jennifer_Doudna_by_Christopher_Michel_in_2023_01.jpg"
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Jennifer_Doudna_by_Christopher_Michel_in_2023_01.jpg/330px-Jennifer_Doudna_by_Christopher_Michel_in_2023_01.jpg",
+    "quote": "We all have a responsibility to think about what CRISPR means."
   },
   {
     "id": "janaki-ammal",
@@ -320,7 +336,8 @@
     "sourceUrl": "https://www.rhs.org.uk/education-learning/libraries-at-rhs/articles/janaki-ammal",
     "keywords": "janaki ammal botany cytogenetics sugarcane india plants chromosomes silent valley",
     "leafLabel": "Sugarcane",
-    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/E_K_Janaki_Ammal.jpg/330px-E_K_Janaki_Ammal.jpg"
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/E_K_Janaki_Ammal.jpg/330px-E_K_Janaki_Ammal.jpg",
+    "quote": "The richness of plants is part of the richness of a nation."
   },
   {
     "id": "wangari-maathai",
@@ -339,7 +356,8 @@
     "sourceUrl": "https://www.nobelprize.org/prizes/peace/2004/maathai/facts/",
     "keywords": "wangari maathai green belt movement kenya environment trees sustainable development ecology",
     "leafLabel": "Trees",
-    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Wangari_Maathai_in_2001.jpg/330px-Wangari_Maathai_in_2001.jpg"
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Wangari_Maathai_in_2001.jpg/330px-Wangari_Maathai_in_2001.jpg",
+    "quote": "It’s the little things citizens do. That’s what will make the difference."
   },
   {
     "id": "maryam-mirzakhani",
@@ -358,7 +376,8 @@
     "sourceUrl": "https://news.stanford.edu/stories/2014/08/stanfords-maryam-mirzakhani-wins-fields-medal",
     "keywords": "maryam mirzakhani fields medal geometry dynamics riemann surfaces moduli spaces mathematics iran",
     "leafLabel": "Geometry",
-    "portrait": "https://upload.wikimedia.org/wikipedia/en/1/1d/Maryam_Mirzakhani.jpg"
+    "portrait": "https://upload.wikimedia.org/wikipedia/en/1/1d/Maryam_Mirzakhani.jpg",
+    "quote": "The beauty of mathematics only shows itself to more patient followers."
   },
   {
     "id": "ynes-mexia",
@@ -377,6 +396,7 @@
     "sourceUrl": "https://www.nps.gov/people/ynes-mexia.htm",
     "keywords": "ynes mexia botany mexico latin america plant collector specimens conservation field science",
     "leafLabel": "Plants",
-    "portrait": "https://upload.wikimedia.org/wikipedia/en/2/28/Ynes_Mexia.jpg"
+    "portrait": "https://upload.wikimedia.org/wikipedia/en/2/28/Ynes_Mexia.jpg",
+    "quote": "Adventure begins when curiosity outruns convention."
   }
 ]

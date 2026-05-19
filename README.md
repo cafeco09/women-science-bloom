@@ -1,30 +1,14 @@
 # The Women Who Made Science Bloom
 
-A GitHub Pages interactive project built as a living tree of women scientists, now redesigned with **real portrait nodes** and **always-on thought bubbles**.
+A one-page GitHub Pages interactive project showing women scientists as faces on a structured tree.
 
 ## What changed in this version
 
-This version makes three important changes:
-
-- **real faces** are used instead of illustration placeholders
-- **thought-bubble names are always visible** and no longer depend on hover
-- the tree interaction no longer relies on hover states, so it is more stable on touch devices and should not flicker when tapped
-
-## Portrait sourcing
-
-This build uses public image URLs for the featured scientists, referenced in `docs/data/scientists.json` under the `portrait` field.
-
-## Included analysis
-
-When a scientist is selected, the drawer shows:
-
-- breakthrough year
-- field peer count
-- region peer count
-- era rank in the full timeline
-- timeline chart
-- field distribution chart
-- region distribution chart
+- faces and names are placed directly on the tree
+- labels are structured to avoid overlap
+- details open as a floating layer **inside the tree** instead of below it
+- the entire experience is designed to fit on one page
+- scientist quotes move horizontally across the top of the page
 
 ## Run locally
 
