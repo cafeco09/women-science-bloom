@@ -1,14 +1,18 @@
 # The Women Who Made Science Bloom
 
-An interactive science garden of women scientists, their breakthrough moments, discoveries, struggles and long-term impact.
+A calmer, more intuitive GitHub Pages prototype for an interactive science garden of women scientists.
 
-## Visual metaphor
+## What changed in this version
 
-- **Flower** = scientist
-- **Branch** = breakthrough moment
-- **Leaf** = discovery
-- **Thorn** = struggle or barrier
-- **Seed** = long-term impact
+The first version tried to show every branch, leaf, thorn and seed at once. That made the page visually busy.
+
+This version uses a clearer interaction model:
+
+1. Pick a scientist flower from the garden map.
+2. Read her breakthrough branch.
+3. See her discovery leaf.
+4. Understand the thorn she pushed through.
+5. End with the seed of long-term impact.
 
 ## Project structure
 
@@ -26,14 +30,12 @@ women-science-bloom/
 
 ## Run locally
 
-Because the site loads `scientists.json`, open it through a local server rather than double-clicking the HTML file.
-
 ```bash
 cd women-science-bloom/docs
 python3 -m http.server 8000
 ```
 
-Then open:
+Open:
 
 ```text
 http://localhost:8000
@@ -41,24 +43,10 @@ http://localhost:8000
 
 ## Deploy on GitHub Pages
 
-1. Push this repo to GitHub.
-2. Go to **Settings → Pages**.
-3. Set:
-   - **Source:** Deploy from a branch
-   - **Branch:** `main`
-   - **Folder:** `/docs`
-4. Save.
-
-Your site should appear at:
+Use:
 
 ```text
-https://YOUR_USERNAME.github.io/women-science-bloom/
-```
-
-For the existing `cafeco09` account, the likely URL is:
-
-```text
-https://cafeco09.github.io/women-science-bloom/
+Settings → Pages → Deploy from a branch → main → /docs
 ```
 
 ## Add more scientists
@@ -69,27 +57,4 @@ Edit:
 docs/data/scientists.json
 ```
 
-Add a new object with this structure:
-
-```json
-{
-  "id": "unique-id",
-  "name": "Scientist Name",
-  "field": "Field",
-  "century": "20th",
-  "years": "1900–1999",
-  "breakthroughYear": 1950,
-  "branch": "Breakthrough moment.",
-  "discovery": "Discovery or contribution.",
-  "struggle": "Barrier or struggle.",
-  "impact": "Long-term impact.",
-  "source": "Source name",
-  "sourceUrl": "https://example.com",
-  "keywords": "searchable keywords",
-  "leafLabel": "short label"
-}
-```
-
-## Framing note
-
-The thorn is deliberately secondary. The project should not reduce women scientists to suffering. The centre of the story is the scientist, the breakthrough and the discovery.
+Keep each entry short. The interface is designed for clarity, not long biographies.

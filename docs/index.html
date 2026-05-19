@@ -3,130 +3,135 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="An interactive science garden of women scientists, their breakthrough moments, discoveries, struggles and impact." />
+  <meta name="description" content="A calm interactive garden of women scientists, their breakthroughs, discoveries, struggles and impact." />
   <title>The Women Who Made Science Bloom</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <main class="app">
-    <aside class="hero" aria-label="Project introduction and filters">
-      <div class="eyebrow">Interactive science garden</div>
-      <h1>The Women Who Made Science Bloom</h1>
-      <p class="subtitle">
-        A living tree of women scientists: flowers are the people, branches are breakthrough moments,
-        leaves are discoveries, thorns are barriers, and seeds are long-term impact.
-      </p>
-
-      <div class="metaphor-card">
-        <p>
-          <strong>Important framing:</strong> the thorns show what each scientist had to push through.
-          They are not the centre of the story — the flower is.
+  <main class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Interactive science garden</p>
+        <h1>The Women Who Made Science Bloom</h1>
+        <p class="hero-text">
+          Explore women scientists through a simple garden metaphor: choose a flower, then follow her
+          breakthrough branch, discovery leaf, struggle thorn and lasting impact seed.
         </p>
       </div>
 
-      <section class="stats" aria-label="Dataset summary">
-        <div class="stat"><strong id="statScientists">0</strong><span>scientists</span></div>
-        <div class="stat"><strong id="statFields">0</strong><span>fields</span></div>
-        <div class="stat"><strong id="statCenturies">0</strong><span>centuries</span></div>
-        <div class="stat"><strong id="statVisible">0</strong><span>visible</span></div>
-      </section>
-
-      <section class="controls" aria-label="Controls">
-        <label>
-          <span class="control-label">Search</span>
-          <input id="searchInput" class="control" type="search" placeholder="Try DNA, orbit, malaria, laser…" />
-        </label>
-        <label>
-          <span class="control-label">Field</span>
-          <select id="fieldFilter" class="control">
-            <option value="all">All fields</option>
-          </select>
-        </label>
-        <label>
-          <span class="control-label">Century</span>
-          <select id="centuryFilter" class="control">
-            <option value="all">All centuries</option>
-          </select>
-        </label>
-        <button id="resetFilters" class="reset-button" type="button">Reset garden</button>
-      </section>
-    </aside>
-
-    <section class="garden-wrap" aria-label="Interactive tree visualisation">
-      <div class="garden-title">
-        <div>
-          <h2>Click a flower to open her story</h2>
-          <p>
-            Each branch grows from a breakthrough moment. Discovery leaves and struggle thorns sit near
-            the same branch, so the story remains scientific first and human second.
-          </p>
-        </div>
-        <div class="hint">Flowers are clickable</div>
-      </div>
-
-      <svg id="treeSvg" role="img" aria-label="Interactive tree of women scientists and scientific breakthroughs">
-        <defs>
-          <linearGradient id="leafGradient" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#8fbd6b" />
-            <stop offset="100%" stop-color="#315a31" />
-          </linearGradient>
-          <radialGradient id="petalGradient" cx="50%" cy="45%" r="70%">
-            <stop offset="0%" stop-color="#ffb3c1" />
-            <stop offset="55%" stop-color="#f47b91" />
-            <stop offset="100%" stop-color="#a82e49" />
-          </radialGradient>
-        </defs>
-      </svg>
-
-      <div class="legend" aria-label="Visual legend">
+      <section class="legend-card" aria-label="How to read the garden">
+        <h2>How to read it</h2>
         <div class="legend-grid">
-          <div class="legend-item"><span class="dot flower-dot"></span> Flower: scientist</div>
-          <div class="legend-item"><span class="dot branch-dot"></span> Branch: breakthrough</div>
-          <div class="legend-item"><span class="dot leaf-dot"></span> Leaf: discovery</div>
-          <div class="legend-item"><span class="dot thorn-dot"></span> Thorn: struggle</div>
-          <div class="legend-item"><span class="dot seed-dot"></span> Seed: impact</div>
+          <span><b>🌸 Flower</b> scientist</span>
+          <span><b>🌿 Branch</b> breakthrough</span>
+          <span><b>🍃 Leaf</b> discovery</span>
+          <span><b>🪡 Thorn</b> barrier</span>
+          <span><b>🌱 Seed</b> impact</span>
         </div>
-      </div>
+      </section>
+    </header>
 
-      <div id="emptyState" class="empty-state">
-        <h3>No blossoms found</h3>
-        <p>Try clearing the search or choosing a wider field filter.</p>
-      </div>
+    <section class="control-bar" aria-label="Search and filters">
+      <label>
+        <span>Search the garden</span>
+        <input id="searchInput" type="search" placeholder="DNA, mRNA, space, malaria…" />
+      </label>
+
+      <label>
+        <span>Field</span>
+        <select id="fieldFilter">
+          <option value="all">All fields</option>
+        </select>
+      </label>
+
+      <label>
+        <span>Century</span>
+        <select id="centuryFilter">
+          <option value="all">All centuries</option>
+        </select>
+      </label>
+
+      <button id="resetFilters" type="button">Reset</button>
     </section>
 
-    <aside class="details" aria-live="polite" aria-label="Scientist detail panel">
-      <div class="details-top">
-        <div>
-          <div class="eyebrow">Selected flower</div>
-          <h3 id="detailName">Loading…</h3>
+    <section class="dashboard">
+      <section class="garden-panel" aria-label="Scientist flowers">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow small">Garden map</p>
+            <h2>Pick a scientist flower</h2>
+          </div>
+          <p id="visibleCount" class="count-pill">0 visible</p>
         </div>
-        <span id="detailField" class="field-pill">Field</span>
-      </div>
 
-      <div id="detailYears" class="years">Breakthrough year</div>
-      <div class="portrait-bloom" aria-hidden="true"></div>
+        <div class="garden-stage">
+          <div class="stem" aria-hidden="true">
+            <span class="root-label">Science</span>
+          </div>
 
-      <div class="section">
-        <h4>Branch · Breakthrough moment</h4>
-        <p id="detailBreakthrough"></p>
-      </div>
-      <div class="section">
-        <h4>Leaf · Discovery</h4>
-        <p id="detailDiscovery"></p>
-      </div>
-      <div class="section">
-        <h4>Thorn · Struggle</h4>
-        <p id="detailStruggle"></p>
-      </div>
-      <div class="section">
-        <h4>Seed · Lasting impact</h4>
-        <p id="detailImpact"></p>
-      </div>
+          <div id="flowerGrid" class="flower-grid"></div>
 
-      <div class="source-row">
-        <a id="detailSource" href="#" target="_blank" rel="noreferrer">Open source</a>
-      </div>
-    </aside>
+          <div id="emptyState" class="empty-state">
+            <h3>No flowers found</h3>
+            <p>Clear the search or choose a wider filter.</p>
+          </div>
+        </div>
+      </section>
+
+      <aside class="story-panel" aria-live="polite" aria-label="Selected scientist story">
+        <div class="story-top">
+          <div>
+            <p class="eyebrow small">Selected flower</p>
+            <h2 id="detailName">Loading…</h2>
+            <p id="detailMeta" class="meta-line"></p>
+          </div>
+          <div class="large-flower" aria-hidden="true">
+            <span></span>
+          </div>
+        </div>
+
+        <div class="story-summary">
+          <span id="detailField" class="field-pill">Field</span>
+          <span id="detailYear" class="year-pill">Year</span>
+        </div>
+
+        <section class="story-step branch-step">
+          <div class="step-icon">🌿</div>
+          <div>
+            <h3>Branch · breakthrough moment</h3>
+            <p id="detailBreakthrough"></p>
+          </div>
+        </section>
+
+        <section class="story-step leaf-step">
+          <div class="step-icon">🍃</div>
+          <div>
+            <h3>Leaf · discovery</h3>
+            <p id="detailDiscovery"></p>
+          </div>
+        </section>
+
+        <section class="story-step thorn-step">
+          <div class="step-icon">🪡</div>
+          <div>
+            <h3>Thorn · struggle</h3>
+            <p id="detailStruggle"></p>
+          </div>
+        </section>
+
+        <section class="story-step seed-step">
+          <div class="step-icon">🌱</div>
+          <div>
+            <h3>Seed · lasting impact</h3>
+            <p id="detailImpact"></p>
+          </div>
+        </section>
+
+        <a id="detailSource" class="source-link" href="#" target="_blank" rel="noreferrer">
+          Open source
+        </a>
+      </aside>
+    </section>
   </main>
 
   <script src="./app.js"></script>

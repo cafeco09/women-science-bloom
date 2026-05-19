@@ -13,7 +13,7 @@
     "source": "Nobel Prize",
     "sourceUrl": "https://www.nobelprize.org/prizes/chemistry/1911/marie-curie/facts/",
     "keywords": "radioactivity polonium radium pitchblende chemistry physics cancer radiation",
-    "leafLabel": "radium"
+    "leafLabel": "Radium"
   },
   {
     "id": "rosalind-franklin",
@@ -45,7 +45,7 @@
     "source": "NASA",
     "sourceUrl": "https://www.nasa.gov/centers-and-facilities/langley/katherine-johnson-biography/",
     "keywords": "nasa orbit trajectory alan shepard john glenn apollo mathematics space human computer",
-    "leafLabel": "orbit"
+    "leafLabel": "Orbit"
   },
   {
     "id": "tu-youyou",
@@ -61,7 +61,7 @@
     "source": "Nobel Prize",
     "sourceUrl": "https://www.nobelprize.org/prizes/medicine/2015/tu/facts/",
     "keywords": "malaria artemisinin sweet wormwood medicine public health parasites",
-    "leafLabel": "malaria"
+    "leafLabel": "Malaria"
   },
   {
     "id": "katalin-kariko",
@@ -93,7 +93,7 @@
     "source": "Nobel Prize",
     "sourceUrl": "https://www.nobelprize.org/prizes/physics/2018/strickland/facts/",
     "keywords": "laser chirped pulse amplification cpa physics optics eye surgery",
-    "leafLabel": "lasers"
+    "leafLabel": "Lasers"
   },
   {
     "id": "chien-shiung-wu",
@@ -109,7 +109,7 @@
     "source": "National Women’s History Museum",
     "sourceUrl": "https://www.womenshistory.org/education-resources/biographies/chien-shiung-wu",
     "keywords": "parity beta decay cobalt nuclear physics weak interaction symmetry wu experiment",
-    "leafLabel": "parity"
+    "leafLabel": "Parity"
   },
   {
     "id": "jocelyn-bell-burnell",
@@ -125,6 +125,6 @@
     "source": "Royal Society",
     "sourceUrl": "https://royalsociety.org/people/jocelyn-bell-burnell-11066/",
     "keywords": "pulsars radio astronomy astrophysics neutron stars cambridge telescope",
-    "leafLabel": "pulsars"
+    "leafLabel": "Pulsars"
   }
 ]
