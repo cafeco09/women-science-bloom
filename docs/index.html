@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A one-page interactive tree of women scientists with portraits, structured labels, moving quotes and an in-tree detail layer." />
+  <meta name="description" content="A one-page interactive tree of women scientists with portraits, organised names, moving quotes and an in-tree detail layer." />
   <title>The Women Who Made Science Bloom</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -14,12 +14,13 @@
     </section>
 
     <header class="topbar">
-      <div>
+      <div class="title-block">
         <p class="eyebrow">Interactive knowledge tree</p>
         <h1>The Women Who Made Science Bloom</h1>
-        <p class="subtitle">Faces and names live directly on the tree. Tap a scientist to open a detail layer without leaving the page.</p>
+        <p class="subtitle">Faces and names sit on the tree. Tap a scientist to open a floating analysis layer.</p>
       </div>
-      <div class="compact-legend">
+
+      <div class="legend-chips" aria-label="How to read the tree">
         <span><b>Portrait</b> scientist</span>
         <span><b>Branch</b> breakthrough</span>
         <span><b>Leaf</b> discovery</span>
@@ -29,38 +30,36 @@
     </header>
 
     <section class="control-bar" aria-label="Search and filters">
-      <label>
+      <label class="search-control">
         <span>Search</span>
         <input id="searchInput" type="search" placeholder="DNA, space, malaria, CRISPR…" />
       </label>
+
       <label>
         <span>Field</span>
         <select id="fieldFilter"><option value="all">All fields</option></select>
       </label>
+
       <label>
         <span>Region</span>
         <select id="regionFilter"><option value="all">All regions</option></select>
       </label>
+
       <label>
         <span>Century</span>
         <select id="centuryFilter"><option value="all">All centuries</option></select>
       </label>
-      <button id="resetFilters" type="button">Reset tree</button>
+
+      <button id="resetFilters" type="button">Reset</button>
+      <p id="visibleCount" class="count-pill">0 visible</p>
     </section>
 
     <section class="tree-card">
-      <div class="stage-top">
-        <div>
-          <p class="eyebrow small">Structured tree view</p>
-          <h2>One page · no overlap · in-tree details</h2>
-        </div>
-        <p id="visibleCount" class="count-pill">0 visible</p>
-      </div>
-
       <div class="tree-stage" id="treeStage">
         <div class="sky-glow glow-one" aria-hidden="true"></div>
         <div class="sky-glow glow-two" aria-hidden="true"></div>
         <div id="pollenLayer" class="pollen-layer" aria-hidden="true"></div>
+
         <svg id="treeSvg" role="img" aria-label="Interactive tree of women scientists">
           <defs>
             <linearGradient id="trunkGradient" x1="0" y1="0" x2="1" y2="1">
@@ -82,9 +81,13 @@
             </linearGradient>
           </defs>
         </svg>
+
         <div class="ground ground-back" aria-hidden="true"></div>
         <div class="ground ground-front" aria-hidden="true"></div>
-        <div class="tree-note">Click a portrait to open details as a floating layer inside the tree.</div>
+
+        <div class="tree-note">
+          Structured name badges prevent overlap. Details open inside the tree.
+        </div>
 
         <div id="emptyState" class="empty-state">
           <h3>No scientists found</h3>
@@ -93,12 +96,13 @@
 
         <article id="detailLayer" class="detail-layer hidden" aria-live="polite">
           <button id="closeLayer" class="close-layer" type="button" aria-label="Close details">×</button>
+
           <div class="layer-head">
             <div class="layer-title-wrap">
               <div class="detail-portrait-wrap"><img id="detailPortrait" alt="" /></div>
               <div>
-                <p class="eyebrow small">Scientist detail layer</p>
-                <h3 id="detailName">Scientist name</h3>
+                <p class="eyebrow small">Scientist detail</p>
+                <h2 id="detailName">Scientist name</h2>
                 <p id="detailMeta" class="meta-line"></p>
               </div>
             </div>
@@ -111,31 +115,34 @@
 
           <div class="detail-grid">
             <div class="detail-story">
-              <section class="story-step branch-step"><span class="step-icon">🌿</span><div><h4>Breakthrough moment</h4><p id="detailBreakthrough"></p></div></section>
-              <section class="story-step leaf-step"><span class="step-icon">🍃</span><div><h4>Discovery</h4><p id="detailDiscovery"></p></div></section>
-              <section class="story-step thorn-step"><span class="step-icon">🪡</span><div><h4>Struggle</h4><p id="detailStruggle"></p></div></section>
-              <section class="story-step seed-step"><span class="step-icon">🌱</span><div><h4>Impact</h4><p id="detailImpact"></p></div></section>
+              <section class="story-step branch-step"><span class="step-icon">🌿</span><div><h3>Breakthrough</h3><p id="detailBreakthrough"></p></div></section>
+              <section class="story-step leaf-step"><span class="step-icon">🍃</span><div><h3>Discovery</h3><p id="detailDiscovery"></p></div></section>
+              <section class="story-step thorn-step"><span class="step-icon">🪡</span><div><h3>Struggle</h3><p id="detailStruggle"></p></div></section>
+              <section class="story-step seed-step"><span class="step-icon">🌱</span><div><h3>Impact</h3><p id="detailImpact"></p></div></section>
               <blockquote id="detailQuote" class="quote-card"></blockquote>
               <a id="detailSource" class="source-link" href="#" target="_blank" rel="noreferrer">Open source</a>
             </div>
 
             <div class="detail-analysis">
               <div class="metric-grid">
-                <article class="metric-card"><span class="metric-label">Breakthrough year</span><strong id="metricBreakthroughYear">—</strong></article>
-                <article class="metric-card"><span class="metric-label">Field peers</span><strong id="metricFieldPeers">—</strong></article>
-                <article class="metric-card"><span class="metric-label">Region peers</span><strong id="metricRegionPeers">—</strong></article>
-                <article class="metric-card"><span class="metric-label">Era rank</span><strong id="metricEraRank">—</strong></article>
+                <article class="metric-card"><span>Year</span><strong id="metricBreakthroughYear">—</strong></article>
+                <article class="metric-card"><span>Field peers</span><strong id="metricFieldPeers">—</strong></article>
+                <article class="metric-card"><span>Region peers</span><strong id="metricRegionPeers">—</strong></article>
+                <article class="metric-card"><span>Era rank</span><strong id="metricEraRank">—</strong></article>
               </div>
+
               <article class="chart-card">
-                <div class="chart-head"><h4>Timeline position</h4><p>All scientists by breakthrough year</p></div>
+                <div class="chart-head"><h3>Timeline position</h3><p>Breakthrough year across all scientists</p></div>
                 <div id="timelineChart" class="timeline-chart"></div>
               </article>
+
               <article class="chart-card compact">
-                <div class="chart-head"><h4>Field distribution</h4></div>
+                <div class="chart-head"><h3>Field distribution</h3></div>
                 <div id="fieldChart" class="bar-chart"></div>
               </article>
+
               <article class="chart-card compact">
-                <div class="chart-head"><h4>Regional distribution</h4></div>
+                <div class="chart-head"><h3>Regional distribution</h3></div>
                 <div id="regionChart" class="bar-chart"></div>
               </article>
             </div>
@@ -144,6 +151,7 @@
       </div>
     </section>
   </main>
+
   <script src="./app.js"></script>
 </body>
 </html>

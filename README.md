@@ -1,14 +1,21 @@
 # The Women Who Made Science Bloom
 
-A one-page GitHub Pages interactive project showing women scientists as faces on a structured tree.
+A one-page GitHub Pages interactive project showing women scientists as faces and organised names on a structured tree.
 
-## What changed in this version
+## What this version fixes
 
-- faces and names are placed directly on the tree
-- labels are structured to avoid overlap
-- details open as a floating layer **inside the tree** instead of below it
-- the entire experience is designed to fit on one page
-- scientist quotes move horizontally across the top of the page
+The previous layout pushed the tree below the fold because the hero and filters were too tall.
+
+This version:
+
+- keeps the moving quote ribbon compact
+- reduces the title area height
+- turns the legend into small inline chips
+- makes the filters shorter
+- gives the tree most of the viewport
+- opens details as a floating layer over the tree
+- keeps faces and names directly on the tree
+- avoids name overlap with structured label positions
 
 ## Run locally
 
