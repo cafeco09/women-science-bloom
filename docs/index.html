@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A visible one-page interactive tree of women scientists with portraits, right-hand filters, moving quotes and an in-tree detail layer." />
+  <meta name="description" content="A no-scroll one-page interactive tree of women scientists with visible portraits, right-hand filters, moving quotes and an in-tree detail layer." />
   <title>The Women Who Made Science Bloom</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -16,10 +16,10 @@
     <section class="workspace">
       <section class="tree-panel">
         <header class="tree-header">
-          <div>
+          <div class="title-block">
             <p class="eyebrow">Interactive Knowledge Tree</p>
             <h1>The Women Who Made Science Bloom</h1>
-            <p class="subtitle">Faces and names sit on a structured tree. Click a scientist to open her story and analysis as a layer over the tree.</p>
+            <p class="subtitle">Faces and names sit directly on a structured tree. Click a scientist to open her story as a layer over the tree.</p>
           </div>
           <div class="legend-strip" aria-label="Legend">
             <span><b>Face</b> scientist</span>
@@ -47,12 +47,14 @@
                 <stop offset="100%" stop-color="#65422d"/>
               </linearGradient>
             </defs>
-            <path class="main-trunk" d="M500 690 C485 600 525 505 500 390" />
-            <path class="main-branch" d="M500 500 C395 455 335 365 220 260" />
-            <path class="main-branch" d="M500 500 C605 455 665 365 780 260" />
+
+            <path class="main-trunk" d="M500 700 C485 610 525 505 500 390" />
+            <path class="main-branch" d="M500 505 C395 455 335 365 220 260" />
+            <path class="main-branch" d="M500 505 C605 455 665 365 780 260" />
             <path class="main-branch" d="M500 425 C430 340 420 250 350 150" />
             <path class="main-branch" d="M500 425 C570 340 580 250 650 150" />
             <path class="main-branch" d="M500 390 C500 295 500 205 500 95" />
+
             <path class="twig-line" d="M350 150 C260 150 180 165 105 210" />
             <path class="twig-line" d="M350 150 C300 120 255 90 205 70" />
             <path class="twig-line" d="M500 95 C420 75 350 65 285 70" />
@@ -65,6 +67,7 @@
             <path class="twig-line" d="M780 260 C700 315 655 360 620 420" />
             <path class="twig-line" d="M780 260 C790 335 790 390 815 455" />
             <path class="twig-line" d="M780 260 C850 300 900 345 940 400" />
+
             <ellipse class="canopy-leaf" cx="195" cy="142" rx="74" ry="30" transform="rotate(-18 195 142)" />
             <ellipse class="canopy-leaf" cx="345" cy="90" rx="86" ry="34" transform="rotate(5 345 90)" />
             <ellipse class="canopy-leaf" cx="500" cy="70" rx="96" ry="36" />
@@ -77,7 +80,6 @@
           </svg>
 
           <div id="nodeLayer" class="node-layer"></div>
-
           <div class="ground ground-back" aria-hidden="true"></div>
           <div class="ground ground-front" aria-hidden="true"></div>
 
@@ -144,7 +146,7 @@
         <div class="sidebar-top">
           <div>
             <p class="eyebrow small">Controls</p>
-            <h2>Filter the tree</h2>
+            <h2>Filter</h2>
           </div>
           <p id="visibleCount" class="count-pill">20 visible</p>
         </div>
@@ -166,12 +168,12 @@
             <span>Century</span>
             <select id="centuryFilter"><option value="all">All centuries</option></select>
           </label>
-          <button id="resetFilters" type="button">Reset tree</button>
+          <button id="resetFilters" type="button">Reset</button>
         </div>
 
         <div class="sidebar-note">
-          <h3>Why this version should show</h3>
-          <p>This build does not draw the faces inside SVG. It uses normal HTML image nodes over a visible tree, which is more reliable on GitHub Pages.</p>
+          <h3>One-page layout</h3>
+          <p>The tree stays visible on load. Filters remain on the right. No vertical scroll is needed on desktop.</p>
         </div>
       </aside>
     </section>

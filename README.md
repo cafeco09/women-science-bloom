@@ -1,31 +1,19 @@
 # The Women Who Made Science Bloom
 
-A reliable, one-page GitHub Pages interactive tree of women scientists.
+A no-scroll one-page GitHub Pages interactive tree of women scientists.
 
-## What is fixed in this build
+## What this fixes
 
-This version is designed to show reliably on GitHub Pages:
+The previous version used a responsive breakpoint that moved the filter panel above the tree too early. On laptop/browser widths below that breakpoint, the dashboard opened on the filter panel and the tree was pushed below the fold.
 
-- The tree is visible in the main frame.
-- Faces and names are regular HTML elements over the tree, not images embedded inside SVG.
-- Filters are in a right-hand sidebar.
-- Names are fixed to structured positions to avoid overlap.
+This build fixes that:
+
+- The tree and filters stay side by side on normal desktop/laptop widths.
+- The page uses `100svh` and fixed grid rows so the tree is visible immediately.
+- The quote ribbon is compact.
+- The right-hand filter panel is compact.
+- The tree uses HTML portrait nodes over a visible SVG tree.
 - Details open as a floating layer over the tree.
-- Quotes move horizontally across the top.
-
-## Files
-
-```text
-women-science-bloom/
-  README.md
-  docs/
-    .nojekyll
-    index.html
-    styles.css
-    app.js
-    data/
-      scientists.json
-```
 
 ## Run locally
 
@@ -40,7 +28,7 @@ Open:
 http://localhost:8000
 ```
 
-## Deploy on GitHub Pages
+## GitHub Pages
 
 Use:
 
