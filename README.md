@@ -1,19 +1,17 @@
 # The Women Who Made Science Bloom
 
-A no-scroll one-page GitHub Pages interactive tree of women scientists.
+A forced right-sidebar, no-scroll one-page version.
 
-## What this fixes
+## What this version fixes
 
-The previous version used a responsive breakpoint that moved the filter panel above the tree too early. On laptop/browser widths below that breakpoint, the dashboard opened on the filter panel and the tree was pushed below the fold.
+The filter panel was appearing above the tree because a responsive breakpoint moved the sidebar into a stacked layout. This version keeps the layout side-by-side on laptop/desktop widths.
 
-This build fixes that:
-
-- The tree and filters stay side by side on normal desktop/laptop widths.
-- The page uses `100svh` and fixed grid rows so the tree is visible immediately.
-- The quote ribbon is compact.
-- The right-hand filter panel is compact.
-- The tree uses HTML portrait nodes over a visible SVG tree.
-- Details open as a floating layer over the tree.
+- Quote ribbon is only 30px high.
+- Tree and filters sit in the same row.
+- Filter panel is fixed on the right.
+- Tree is visible immediately on page load.
+- No desktop scroll.
+- Layout only stacks on very narrow phone screens under 640px.
 
 ## Run locally
 
@@ -26,12 +24,4 @@ Open:
 
 ```text
 http://localhost:8000
-```
-
-## GitHub Pages
-
-Use:
-
-```text
-Settings → Pages → Deploy from a branch → main → /docs
 ```
