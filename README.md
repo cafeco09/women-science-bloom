@@ -31,3 +31,8 @@ http://localhost:8000
 ## Detail header fix
 
 This version fixes the small overlap in the floating detail layer by stacking the field, origin and breakthrough pills beneath the scientist name instead of forcing them into the same row.
+
+
+## Link and timeline-year fix
+
+This version updates every detail-layer button to open a stable scientist profile page and rotates the timeline years by 90 degrees for a cleaner analysis chart.

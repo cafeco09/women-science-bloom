@@ -207,7 +207,7 @@ function setDetails(scientist) {
   details.impact.textContent = scientist.impact;
   details.quote.textContent = `“${scientist.quote || scientist.discovery}”`;
   details.source.href = scientist.sourceUrl;
-  details.source.textContent = `Open source · ${scientist.source}`;
+  details.source.textContent = `Open scientist page · ${scientist.source}`;
 
   updateAnalysis(scientist);
 }

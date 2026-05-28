@@ -835,3 +835,22 @@ h1,h2,h3,p,blockquote { margin-top: 0; }
     padding-left: 0;
   }
 }
+
+
+/* --- Timeline year rotation fix ---
+   Years now sit at a 90-degree angle to keep the timeline compact and readable. */
+.timeline-chart {
+  height: 92px !important;
+  padding-bottom: 28px !important;
+  overflow: visible !important;
+}
+
+.timeline-bar::after {
+  bottom: -24px !important;
+  left: 50% !important;
+  transform: translateX(-50%) rotate(-90deg) !important;
+  transform-origin: center center !important;
+  font-size: 0.5rem !important;
+  line-height: 1 !important;
+  letter-spacing: 0.02em !important;
+}
